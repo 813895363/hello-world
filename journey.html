@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究历程 · 张天生 Tiansheng Zhang</title>
+<meta name="description" content="张天生的研究与工作历程：威斯康星大学果蝇 Gal4/UAS 研究，LabCorp 早期药物研发一线经历。Research & career journey of Tiansheng Zhang.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --radius: 20px;
+    --radius-sm: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 语言切换 ---------- */
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+/* ---------- 通用新拟态 ---------- */
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.neu-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: box-shadow .2s ease, transform .2s ease;
+    font-family: inherit;
+}
+.neu-btn:hover { transform: translateY(-2px); }
+.neu-btn:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    transform: translateY(0);
+}
+.neu-btn.plain { color: var(--text); }
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+section { padding: 60px 0 8px; scroll-margin-top: 110px; }
+
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px;
+    background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 19px; color: var(--text-muted); letter-spacing: 1px; }
+
+/* ---------- 顶部导航（页面切换） ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg);
+    border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 13px; border-radius: 999px; white-space: nowrap;
+    transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 方向下拉：悬停显示 工具/图示 */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 150px; position: sticky; top: 96px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- 页头 ---------- */
+.page-hero { padding: 64px 0 6px; text-align: center; }
+.page-hero h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 10px; }
+.page-hero .sub { color: var(--text-muted); font-size: 15.5px; }
+
+/* ---------- 历程卡片 ---------- */
+.j-card { padding: 38px 42px; }
+.j-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.t-pill {
+    font-size: 12.5px; color: var(--accent-deep); padding: 4px 14px; border-radius: 999px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+.story-block { margin-top: 26px; }
+.story-block:first-of-type { margin-top: 14px; }
+.story-block h3 { font-size: 16.5px; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.story-block h3 .en { font-size: 13.5px; color: var(--text-muted); font-weight: 600; }
+.story-icon {
+    width: 12px; height: 12px; border-radius: 50%; flex: none;
+    background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.story-block p { font-size: 14.5px; }
+.story-block p + p { margin-top: 12px; }
+.story-block em { font-style: normal; color: var(--accent-deep); font-weight: 600; }
+
+/* ---------- 思维导图 ---------- */
+.fig-wrap { margin-top: 16px; }
+.fig-wrap svg { display: block; width: 100%; height: auto; }
+
+/* ---------- 页脚 ---------- */
+footer {
+    margin-top: 70px; padding: 34px 0 40px; text-align: center;
+    color: var(--text-muted); font-size: 13.5px;
+}
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 860px) {
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .page-hero h1 { font-size: 30px; }
+    .j-card { padding: 26px 22px; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 顶部导航：页面切换 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link current" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= 页头 ================= -->
+<header class="page-hero container">
+    <h1><span class="zh">研究历程</span><span class="en">My Journey</span></h1>
+    <p class="sub">
+        <span class="zh">从果蝇实验室的 Gal4/UAS 研究，到美国 CRO 早期药物研发一线</span>
+        <span class="en">From Gal4/UAS research in the fly lab to the front line of early drug development at a US CRO</span>
+    </p>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#university" class="active"><span class="zh">大学研究</span><span class="en">University</span></a>
+            <a href="#labcorp"><span class="zh">Labcorp 历程</span><span class="en">Labcorp</span></a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= 大学研究历程 ================= -->
+<section id="university" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">大学研究历程</span><span class="en">UNIVERSITY RESEARCH</span></h2>
+    </div>
+    <div class="neu j-card">
+        <div class="j-meta">
+            <span class="t-pill"><span class="zh">威斯康星大学苏必利尔分校</span><span class="en">University of Wisconsin–Superior</span></span>
+            <span class="t-pill"><span class="zh">导师：Dr. Kristopher McConnell</span><span class="en">Mentor: Dr. Kristopher McConnell</span></span>
+            <span class="t-pill">Gal4/UAS · Drosophila</span>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">起点 ｜ 加入实验室</span><span class="en">The Beginning · Joining the Lab</span></h3>
+            <p>
+                <span class="zh">大三伊始，我加入了 Kristopher McConnell 博士的实验室，开展 Gal4/UAS 系统研究并积累基因相关研究经验，为日后探索"永生"这一课题打下基础。在 McConnell 博士的指导下，我以黑腹果蝇（Drosophila melanogaster）为实验模型研究生殖系统——日常饲养、杂交与种群维护——并逐步具备了执行实验操作、理解 protocol 并独立开展研究的能力。获得季度实验经费后，我正式开始了 Gal4/UAS 系统的研究。</span>
+                <span class="en">At the beginning of my junior year, I joined Dr. Kristopher McConnell's lab to research the Gal4/UAS system and gain experience in genetic research, which laid the foundation for my future research on immortality. Under Dr. McConnell's supervision, I learned to use Drosophila melanogaster as an experimental model to study the reproductive system — daily care, hybridization, and stock maintenance — while building the ability to perform procedures, understand protocols, and conduct independent research. After receiving quarterly experimental funding, I formally began my Gal4/UAS research.</span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">验证假设 ｜ Hsp70:Gal4 与卵巢细胞死亡</span><span class="en">Testing the Hypothesis · Hsp70:Gal4 &amp; Ovarian Cell Death</span></h3>
+            <p>
+                <span class="zh">Gal4/UAS 系统可控制下游靶基因的组织特异性表达，被广泛应用于果蝇癌症研究中的分子信号通路与 p53 等致癌基因研究。然而，McConnell 博士此前的研究发现了该系统的缺陷，我的初步实验进一步证实了他的假设：<em>"热诱导型 Hsp70:Gal4 的表达会导致果蝇卵巢中卵泡细胞与滋养细胞死亡，并使雌蝇无法产卵。"</em>我设置对照实验，比较对照组与 Hsp70:Gal4 雌蝇组前四天的产卵数量；同时解剖果蝇卵巢、固定卵室、以 DAPI 染色、制作荧光显微镜切片并拍照，分析卵巢形态。Hsp70:Gal4 雌蝇产卵数显著低于对照组，卵泡细胞与滋养细胞的细胞核出现皱缩，共同支持了这一假设。与此同时，我通过 caspase 与 actin-red 染料的荧光图像分析，发现了卵巢形态中的其他异常，并测试了组织特异性 Gal4/UAS 表达对果蝇卵巢相关神经与肌肉组织的影响。</span>
+                <span class="en">The Gal4/UAS system, which controls tissue-specific expression of downstream target genes, is widely used in Drosophila cancer studies of molecular signaling pathways and oncogenes such as p53. However, Dr. McConnell's earlier work had identified flaws in the system, and my initial experiments further confirmed his hypothesis: <em>"Expression of the heat-inducible Hsp70:Gal4 causes follicle and nurse cell death in the fly ovary and prevents female flies from laying eggs."</em> I set up controlled experiments comparing the number of eggs laid in the first four days between control and Hsp70:Gal4 females. I also dissected Drosophila ovaries, fixed egg chambers, stained cells with DAPI, prepared fluorescence microscopy slides, and photographed them to analyze ovary morphology. The low egg count in Hsp70:Gal4 females versus controls, together with shrinkage of follicle and nurse cell nuclei, supported the hypothesis. At the same time, by analyzing fluorescence images with caspase and actin-red dyes, I identified additional disruptions in ovarian morphology and tested the effects of tissue-specific Gal4/UAS expression on ovary-related nerve and muscle tissue.</span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">追溯机制 ｜ 从上游到下游的排查</span><span class="en">Tracing the Mechanism · Upstream to Downstream</span></h3>
+            <p>
+                <span class="zh">好奇心让我没有止步于验证最初的假设——我想弄清结果背后的驱动机制。与 McConnell 博士探讨后，我再次获得季度实验经费，开始沿着 Gal4/UAS 系统从上游到下游排查 Gal4 诱导异常的机制：Gal4 启动子、Gal4 蛋白及其转录激活域。</span>
+                <span class="en">Curiosity kept me from stopping at confirming the initial hypothesis — I wanted to understand what was driving the results. After consulting Dr. McConnell, I received another quarterly grant and began investigating the mechanism of Gal4-induced disruption from upstream to downstream of the Gal4/UAS system: the Gal4 promoter, the Gal4 protein, and its transactivation domain.</span>
+            </p>
+            <p>
+                <span class="zh">首先，我验证了不同 Gal4 启动子是否会引发与 Hsp70:Gal4 类似的异常：针对不同 driver 设置多组对照，比较荧光图像中卵泡细胞与滋养细胞的死亡比例并统计产卵率。结果显示，各实验组均出现不同程度的细胞死亡、产卵数显著少于对照组，提示不同 Gal4 driver 的共表达会增强类似的异常。其次，我使用表达缺失转录激活域 Gal4 蛋白的 Hsp70:Gal4 DBD，以及仅在喂食类固醇孕酮后才能结合 UAS 的 Act:Gal4-PR Switch，检验在不结合下游 UAS 的情况下是否仍会发生细胞死亡与产卵减少——两组均未出现异常，说明该效应依赖于 Gal4 的转录激活功能。第三，我比对并鉴定了若干与果蝇 UAS 同源的基因序列。虽然时间所限未能完成后续实验，但我提出假设：<em>"Gal4 蛋白激活了 UAS 同源基因的下游序列，诱导了果蝇体内一条或多条细胞死亡通路。"</em></span>
+                <span class="en">First, I tested whether different Gal4 promoters cause disruptions similar to Hsp70:Gal4: across multiple control groups with different drivers, I compared follicle- and nurse-cell death ratios in fluorescence images and measured egg-laying rates. All experimental groups showed varying degrees of cell death and markedly fewer eggs than controls, suggesting that co-expression of different Gal4 drivers enhances similar disruptions. Second, I used Hsp70:Gal4 DBD — which expresses Gal4 protein lacking the transactivation domain — and Act:Gal4-PR Switch, whose Gal4 binds UAS only after feeding the steroid progesterone, to determine whether cell death and reduced egg production occur without downstream UAS binding. Neither group showed disruption, indicating the effect depends on Gal4's transcriptional activation function. Third, I compared and identified several gene sequences homologous to the Drosophila UAS sequence. Although time constraints prevented the follow-up experiments, I hypothesized that <em>"Gal4 protein activates downstream sequences of UAS-homologous genes, inducing one or more cell-death pathways in Drosophila."</em></span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">挑战与收获 ｜ 两次学术展示</span><span class="en">Challenges &amp; Outcomes · Two Showcases</span></h3>
+            <p>
+                <span class="zh">研究过程并非一帆风顺：部分批次数据不稳定、环境因素影响导致需要重复实验、蛋白相互作用的知识储备不足。通过增加实验次数、持续优化实验方案、向导师请教并不断补足所需知识，我稳步推进了研究。这些工作加深了我对 Gal4/UAS 分子通路的理解，也让我看到它对使用该基因工具的其他研究的潜在影响；研究成果先后在 <em>2022 年 "Research in the Rotunda"</em> 和 <em>2023 年第 64 届果蝇研究年会（64th Annual Drosophila Research Conference）</em>上展示。</span>
+                <span class="en">The work came with challenges — unstable data in some trials, experiments repeated due to environmental factors, and limited prior knowledge of protein interactions. By increasing trial counts, continuously refining my approach, consulting my mentor, and steadily acquiring the knowledge I needed, I kept the research moving forward. These efforts deepened my understanding of the Gal4/UAS molecular pathway and its potential impact on other studies using this genetic tool, and led to my work being exhibited at <em>"Research in the Rotunda" in 2022</em> and the <em>"64th Annual Drosophila Research Conference" in 2023</em>.</span>
+            </p>
+        </div>
+
+        <!-- ================= 大学研究历程 · 思维导图 ================= -->
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">全景速览 ｜ 思维导图</span><span class="en">At a Glance · Mind Map</span></h3>
+            <div class="fig-wrap">
+            <svg viewBox="0 0 960 650" role="img" aria-label="大学研究历程思维导图 / Mind map of university research">
+                <!-- 连接线：中枢 → 分支 -->
+                <g stroke="#aab4c8" stroke-width="2.5" fill="none" stroke-linecap="round">
+                    <path d="M405,294 C345,260 305,232 288,202"/>
+                    <path d="M405,366 C345,400 305,428 288,458"/>
+                    <path d="M555,294 C615,260 655,232 672,202"/>
+                    <path d="M555,366 C615,400 655,428 672,458"/>
+                </g>
+                <!-- 分支内叶节点纵贯线 -->
+                <g stroke="#c1cbda" stroke-width="2" fill="none">
+                    <path d="M190,39 L190,162"/>
+                    <path d="M190,498 L190,609"/>
+                    <path d="M790,39 L790,162"/>
+                    <path d="M790,498 L790,609"/>
+                </g>
+
+                <!-- 中枢节点 -->
+                <rect x="385" y="288" width="190" height="84" rx="18" fill="#e6ebf4" stroke="#4f7df9" stroke-width="2.5"/>
+                <text class="zh" x="480" y="318" text-anchor="middle" font-size="16" font-weight="700" fill="#3b64e0">大学研究历程</text>
+                <text class="en" x="480" y="318" text-anchor="middle" font-size="12" font-weight="700" fill="#3b64e0">University Research</text>
+                <text class="zh" x="480" y="341" text-anchor="middle" font-size="10.5" fill="#6f7a92">Gal4/UAS · 黑腹果蝇</text>
+                <text class="en" x="480" y="341" text-anchor="middle" font-size="9.5" fill="#6f7a92">Gal4/UAS · Drosophila</text>
+
+                <!-- 分支一：起点（左上） -->
+                <rect x="90" y="160" width="200" height="48" rx="16" fill="#e6ebf4" stroke="#4f7df9" stroke-width="1.8"/>
+                <text class="zh" x="190" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#3b64e0">起点 · 加入实验室</text>
+                <text class="en" x="190" y="188" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3b64e0">The Beginning</text>
+                <rect x="30" y="106" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="190" y="127" text-anchor="middle" font-size="11" fill="#3b4256">大三加入 McConnell 实验室</text>
+                <text class="en" x="190" y="127" text-anchor="middle" font-size="9.5" fill="#3b4256">Joined Dr. McConnell's lab (junior year)</text>
+                <rect x="30" y="64" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="190" y="85" text-anchor="middle" font-size="11" fill="#3b4256">果蝇饲养 · 杂交 · 种群维护</text>
+                <text class="en" x="190" y="85" text-anchor="middle" font-size="9.5" fill="#3b4256">Fly husbandry · crosses · stock keeping</text>
+                <rect x="30" y="22" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="190" y="43" text-anchor="middle" font-size="11" fill="#3b4256">获季度经费 → 启动 Gal4/UAS 研究</text>
+                <text class="en" x="190" y="43" text-anchor="middle" font-size="9.5" fill="#3b4256">Quarterly grant → Gal4/UAS project begins</text>
+
+                <!-- 分支二：验证假设（左下） -->
+                <rect x="90" y="452" width="200" height="48" rx="16" fill="#e6ebf4" stroke="#4f7df9" stroke-width="1.8"/>
+                <text class="zh" x="190" y="480" text-anchor="middle" font-size="13" font-weight="700" fill="#3b64e0">验证假设</text>
+                <text class="en" x="190" y="480" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3b64e0">Testing the Hypothesis</text>
+                <rect x="30" y="508" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="190" y="529" text-anchor="middle" font-size="11" fill="#3b4256">Hsp70:Gal4 → 卵巢细胞死亡、不产卵</text>
+                <text class="en" x="190" y="529" text-anchor="middle" font-size="9.5" fill="#3b4256">Hsp70:Gal4 → ovarian cell death, no eggs</text>
+                <rect x="30" y="550" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="190" y="571" text-anchor="middle" font-size="11" fill="#3b4256">产卵数显著下降 · 细胞核皱缩（DAPI）</text>
+                <text class="en" x="190" y="571" text-anchor="middle" font-size="9.5" fill="#3b4256">Far fewer eggs · shrunken nuclei (DAPI)</text>
+                <rect x="30" y="592" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="190" y="613" text-anchor="middle" font-size="11" fill="#3b4256">caspase / actin-red 揭示更多形态异常</text>
+                <text class="en" x="190" y="613" text-anchor="middle" font-size="9.5" fill="#3b4256">caspase / actin-red: further defects</text>
+
+                <!-- 分支三：追溯机制（右上） -->
+                <rect x="670" y="160" width="200" height="48" rx="16" fill="#e6ebf4" stroke="#4f7df9" stroke-width="1.8"/>
+                <text class="zh" x="790" y="188" text-anchor="middle" font-size="13" font-weight="700" fill="#3b64e0">追溯机制</text>
+                <text class="en" x="790" y="188" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3b64e0">Tracing the Mechanism</text>
+                <rect x="610" y="106" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="790" y="127" text-anchor="middle" font-size="11" fill="#3b4256">多种 Gal4 driver 均引发异常</text>
+                <text class="en" x="790" y="127" text-anchor="middle" font-size="9.5" fill="#3b4256">Multiple Gal4 drivers → similar defects</text>
+                <rect x="610" y="64" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="790" y="85" text-anchor="middle" font-size="11" fill="#3b4256">DBD · PR Switch：效应依赖转录激活</text>
+                <text class="en" x="790" y="85" text-anchor="middle" font-size="9.5" fill="#3b4256">DBD · PR Switch: activation-dependent</text>
+                <rect x="610" y="22" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="790" y="43" text-anchor="middle" font-size="11" fill="#3b4256">假设：UAS 同源基因 → 细胞死亡通路</text>
+                <text class="en" x="790" y="43" text-anchor="middle" font-size="9.5" fill="#3b4256">Hypothesis: UAS-homologs → cell-death pathway</text>
+
+                <!-- 分支四：挑战与收获（右下） -->
+                <rect x="670" y="452" width="200" height="48" rx="16" fill="#e6ebf4" stroke="#4f7df9" stroke-width="1.8"/>
+                <text class="zh" x="790" y="480" text-anchor="middle" font-size="13" font-weight="700" fill="#3b64e0">挑战与收获</text>
+                <text class="en" x="790" y="480" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3b64e0">Challenges &amp; Outcomes</text>
+                <rect x="610" y="508" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="790" y="529" text-anchor="middle" font-size="11" fill="#3b4256">数据波动 → 增加次数、优化方案</text>
+                <text class="en" x="790" y="529" text-anchor="middle" font-size="9.5" fill="#3b4256">Unstable data → more trials, refinements</text>
+                <rect x="610" y="550" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="790" y="571" text-anchor="middle" font-size="11" fill="#3b4256">2022 · Research in the Rotunda 展示</text>
+                <text class="en" x="790" y="571" text-anchor="middle" font-size="9.5" fill="#3b4256">2022 · Research in the Rotunda</text>
+                <rect x="610" y="592" width="320" height="34" rx="17" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="790" y="613" text-anchor="middle" font-size="11" fill="#3b4256">2023 · 第 64 届果蝇研究年会</text>
+                <text class="en" x="790" y="613" text-anchor="middle" font-size="9.5" fill="#3b4256">2023 · 64th Drosophila Research Conference</text>
+            </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= Labcorp 工作历程 ================= -->
+<section id="labcorp" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">Labcorp 工作历程</span><span class="en">LABCORP JOURNEY</span></h2>
+    </div>
+    <div class="neu j-card">
+        <div class="j-meta">
+            <span class="t-pill">LabCorp Early Drug Development</span>
+            <span class="t-pill">2023.03 – 2026.02</span>
+            <span class="t-pill">Study Technician → Senior Technician</span>
+            <span class="t-pill"><span class="zh">美国 · 麦迪逊</span><span class="en">Madison, WI, USA</span></span>
+        </div>
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">毒理检测与体内研究</span><span class="en">Toxicology &amp; In Vivo Research</span></h3>
+            <p>
+                <span class="zh">毕业后，我接受 offer 以 Study Technician 身份加入 LabCorp，为多家制药与生物科技公司开展 FDA 批准前的毒理检测——其中许多是肿瘤药物。在研究中，我负责样本采集、受试物给药与体内模型的数据分析，涉及小鼠、大鼠、灵长类与犬等模型，重点关注针对胰腺癌与肺腺癌的潜在疗法。</span>
+                <span class="en">After graduation, I accepted an offer as a Study Technician at LabCorp, conducting toxicity testing for pharmaceutical and biotech companies ahead of FDA approval — many of them oncology drugs. Within these studies I was responsible for sample collection, administration of test articles, and data analysis across in vivo models including mice, rats, primates, and canines, with a focus on potential therapies for pancreatic cancer and lung adenocarcinoma.</span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">多项目并行运营 ｜ 年均 7+ 研究</span><span class="en">Multi-Project Operations · 7+ Studies/Year</span></h3>
+            <p>
+                <span class="zh">在 LabCorp 的三年间，我平均每年并行支持至少 <em>7 个</em> preclinical / early-stage 研究项目，累计参与约 <em>40 个</em>研究，其中包括 Cell &amp; Gene Therapy 等高复杂度项目。我对接 Study Director 与跨职能团队，协助研究启动、执行监控与关键节点推进；同时承担实验室日常运行支持——实验排期协调、资源使用支持与关键节点保障——在药理、毒理、生物分析等多职能团队之间保障研究沿时间线推进。</span>
+                <span class="en">Over three years at LabCorp, I supported <em>7+ concurrent</em> preclinical / early-stage studies per year — roughly <em>40 studies</em> in total — including highly complex Cell &amp; Gene Therapy programs. I coordinated with Study Directors and cross-functional teams on study initiation, execution monitoring, and milestone delivery, while supporting day-to-day lab operations: scheduling coordination, resource allocation, and critical-path coverage — keeping studies on timeline across pharmacology, toxicology, and bioanalysis functions.</span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">质量与偏差管理 ｜ 关键节点决策</span><span class="en">Quality &amp; Deviation Management · Critical-Point Decisions</span></h3>
+            <p>
+                <span class="zh">我持续跟踪 study 执行进度，及时识别 protocol / SOP 偏差并向 Study Director 汇报，并参与研究文件与数据的 QC 审核，主动发现并解决问题，从源头降低偏差发生风险。在多物种非临床研究项目中，我负责<em>关键实验节点的执行决策与质量把控</em>，确保研究按方案及 SOP 要求顺利推进。</span>
+                <span class="en">I tracked study execution continuously, identified protocol / SOP deviations and reported them to Study Directors, and performed QC review of study documents and data — proactively resolving issues to reduce deviation risk at the source. In multi-species nonclinical programs, I owned <em>execution decisions and quality control at critical study milestones</em>, ensuring studies advanced in full compliance with protocols and SOPs.</span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">独立当班 ｜ 高压下的现场管理</span><span class="en">Independent Shift Leadership · Decisions Under Pressure</span></h3>
+            <p>
+                <span class="zh">在公司业务量最大的部门（Client），我长期承担 second shift 工作安排。在监管资源有限的班次里，我<em>独立处理实验异常与紧急事件</em>——包括作为 certified technician，在兽医或 SD 不在场时执行经授权的人道处置（humane sacrifice）——保障实验连续性、动物福利与研究合规。这段经历锻炼了我在高压环境下快速评估风险、独立决策并兜底全局的能力。</span>
+                <span class="en">In the company's highest-volume department (Client), I worked second shift long-term. With limited supervisory resources on shift, I <em>independently handled experimental anomalies and emergencies</em> — including, as a certified technician, performing authorized humane endpoints when the veterinarian or SD was off-site — safeguarding study continuity, animal welfare, and compliance. This forged my ability to assess risk quickly, make independent decisions, and own the outcome under pressure.</span>
+            </p>
+        </div>
+
+        <div class="story-block">
+            <h3><span class="story-icon"></span><span class="zh">成长与方向</span><span class="en">Growth &amp; Direction</span></h3>
+            <p>
+                <span class="zh">这段经历把我塑造成一名严谨而沉着的研究者：能沉着应对紧急情况、高效沟通，并在多任务并行中主动承担主导角色。同时，在细胞与基因治疗实验室的工作以及学术会议经历，让我接触到药物递送与药物设计的前沿技术，点燃了我对药物研发的兴趣，也让我认识到<em>基因编辑与蛋白质工程</em>是未来医疗——也是实现我个人人生目标——的关键路径。</span>
+                <span class="en">This experience shaped me into a responsible and calm researcher — able to handle emergencies, communicate effectively, and take the lead while multitasking. Meanwhile, working in cell and gene therapy labs and attending conferences exposed me to cutting-edge drug delivery and design technologies, sparked my interest in drug development, and made me realize that <em>gene editing and protein engineering</em> are essential approaches for the future of medicine — and for achieving my own life goals.</span>
+            </p>
+        </div>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国</span><span class="en">China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? '研究历程 · 张天生 Tiansheng Zhang'
+            : 'My Journey · Tiansheng Zhang';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // 左侧章节栏高亮
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) {
+                var i = sections.indexOf(en.target);
+                links.forEach(function (a, j) { a.classList.toggle('active', i === j); });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) navIO.observe(s); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究方向 · 张天生 Tiansheng Zhang</title>
+<meta name="description" content="张天生感兴趣的研究方向：端粒与基因组稳定性、蛋白质设计与编辑、肿瘤机制与靶向防治。Research interests of Tiansheng Zhang.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --radius: 20px;
+    --radius-sm: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.neu-btn {
+    display: inline-block; padding: 12px 28px; border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none;
+    cursor: pointer; transition: box-shadow .2s ease, transform .2s ease; font-family: inherit;
+}
+.neu-btn:hover { transform: translateY(-2px); }
+.neu-btn:active { box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light); transform: translateY(0); }
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+section { padding: 60px 0 8px; scroll-margin-top: 110px; }
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px; background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 19px; color: var(--text-muted); letter-spacing: 1px; }
+
+/* ---------- 顶部导航（页面切换） ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg); border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 13px; border-radius: 999px; white-space: nowrap; transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 方向下拉：悬停显示 工具/图示 */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 168px; position: sticky; top: 96px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px; background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55); transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- 页头 ---------- */
+.page-hero { padding: 64px 0 6px; text-align: center; }
+.page-hero h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 10px; }
+.page-hero .sub { color: var(--text-muted); font-size: 15.5px; max-width: 720px; margin: 0 auto; }
+
+/* ---------- 概览卡 ---------- */
+.intro-card { padding: 32px 38px; font-size: 15px; }
+.intro-card strong { color: var(--accent-deep); }
+
+/* ---------- 人物卡 ---------- */
+.person-card { padding: 30px 34px; margin-bottom: 26px; transition: transform .25s ease; }
+.person-card:hover { transform: translateY(-3px); }
+.person-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 10px; }
+.person-head h3 { font-size: 19px; }
+.t-pill {
+    font-size: 12.5px; color: var(--accent-deep); padding: 4px 14px; border-radius: 999px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+.person-focus { font-size: 14.5px; margin-bottom: 10px; }
+.person-why { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+.person-why strong { color: var(--accent-deep); font-weight: 600; }
+
+.paper-box {
+    border-radius: 14px; padding: 16px 20px;
+    box-shadow: inset 4px 4px 9px var(--shadow-dark), inset -4px -4px 9px var(--shadow-light);
+}
+.paper-box + .paper-box { margin-top: 12px; }
+.paper-tag {
+    display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .5px;
+    color: #fff; background: var(--accent); border-radius: 6px; padding: 2px 9px; margin-bottom: 6px;
+}
+.paper-title { font-size: 14.5px; font-weight: 600; }
+.paper-title a { color: var(--accent-deep); text-decoration: none; }
+.paper-title a:hover { text-decoration: underline; }
+.paper-journal { font-size: 12.5px; color: var(--text-muted); margin: 2px 0 8px; }
+.paper-note { font-size: 13.5px; color: var(--text); }
+
+/* ---------- 页脚 ---------- */
+footer { margin-top: 70px; padding: 34px 0 40px; text-align: center; color: var(--text-muted); font-size: 13.5px; }
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+@media (max-width: 860px) {
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .page-hero h1 { font-size: 30px; }
+    .intro-card, .person-card { padding: 24px 22px; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 顶部导航：页面切换 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link current" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= 页头 ================= -->
+<header class="page-hero container">
+    <h1><span class="zh">感兴趣的研究方向</span><span class="en">Research Interests</span></h1>
+    <p class="sub">
+        <span class="zh">以"永生（Immortality）"相关的分子生物学为长期目标，沿三条主线积累：端粒与基因组稳定性 · 蛋白质设计与编辑 · 肿瘤机制与靶向防治</span>
+        <span class="en">A long-term focus on the molecular biology of immortality, built along three lines: telomere &amp; genome stability · protein design &amp; engineering · cancer mechanisms &amp; targeted prevention</span>
+    </p>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#overview" class="active"><span class="zh">总览</span><span class="en">Overview</span></a>
+            <a href="#telomere"><span class="zh">端粒与基因组稳定性</span><span class="en">Telomere &amp; Genome</span></a>
+            <a href="#protein"><span class="zh">蛋白质设计与编辑</span><span class="en">Protein Design</span></a>
+            <a href="#cancer"><span class="zh">肿瘤机制与靶向</span><span class="en">Cancer Mechanisms</span></a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= 总览 ================= -->
+<section id="overview" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">总览</span><span class="en">OVERVIEW</span></h2>
+    </div>
+    <div class="neu intro-card">
+        <p>
+            <span class="zh">我相信，<strong>基因组的不完整性</strong>与<strong>基因突变的调控</strong>在普通细胞与癌细胞中存在根本差异，而<strong>基因治疗</strong>是通往"永生"的可行路径——病毒载体与长寿相关蛋白设计都离不开蛋白质编辑技术。因此我沿三条主线积累：理解端粒结构稳定性与染色体断裂修复如何维持基因组完整性；掌握蛋白质设计与高通量筛选，以改造功能蛋白的募集效率与结合亲和力；深入肿瘤发生机制与靶向防治策略。以下每位研究者的工作都对应我关注的具体方向，并附代表性论文与我的解读。</span>
+            <span class="en">I believe the <strong>incompleteness of the genome</strong> and the <strong>regulation of gene mutations</strong> differ fundamentally between normal cells and cancer cells, and that <strong>gene therapy</strong> is the viable path toward immortality — both viral vectors and immortality-related protein design require mastery of protein engineering. I therefore build along three lines: how telomere structural stability and chromosome-break repair preserve genome integrity; protein design and high-throughput screening to tune recruitment efficiency and binding affinity; and tumor initiation mechanisms with targeted prevention. Each researcher below maps to a specific direction, with representative papers and my notes.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ================= 方向一：端粒与基因组稳定性 ================= -->
+<section id="telomere" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">端粒与基因组稳定性</span><span class="en">TELOMERE &amp; GENOME STABILITY</span></h2>
+    </div>
+
+    <!-- Griffith -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Jack Griffith</h3>
+            <span class="t-pill">T-loop · R-loop · TERRA</span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">研究端粒 T-loop 与 R-loop 形成的结构与分子机制，以及它们可能导致的基因组不稳定性。</span>
+            <span class="en">The structure and molecular mechanisms of telomere T-loop and R-loop formation, and the potential genomic instability they cause.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">帮助我深入理解端粒的结构稳定性机制，并从 R-loop 相关酶的调控中获得启发，探索实现端粒酶持续合成能力（telomerase processivity）的路径。</span>
+            <span class="en">Deepens my understanding of telomere structural stability and inspires me, through the regulation of R-loop-related enzymes, toward achieving telomerase processivity.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://doi.org/10.3389/fgene.2019.00792" target="_blank" rel="noopener">Formation of T-Loops at the Telomere: A Link Between Looping and Transcription</a></div>
+            <div class="paper-journal">Frontiers in Genetics, 2019</div>
+            <p class="paper-note">
+                <span class="zh">系统梳理端粒 T-loop 的形成机制及其与端粒转录产物 TERRA 的联系——TERRA 在端粒处形成的 R-loop 正是我关注的端粒稳定性调控切入点。</span>
+                <span class="en">Dissects how telomeric T-loops form and how they connect to telomeric transcription (TERRA) — the TERRA R-loops at the heart of my interest in telomere stability regulation.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Ramsden -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Dale Ramsden</h3>
+            <span class="t-pill">Pol θ · TMEJ</span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">研究 DNA 修复酶 Pol θ（DNA 聚合酶 θ）介导的染色体断裂修复过程。</span>
+            <span class="en">The DNA-repair polymerase Pol θ and the repair of chromosome breaks.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">帮助我理解染色体断裂的修复过程，启发我思考细胞如何维持基因组完整性。</span>
+            <span class="en">Helps me understand how chromosome breaks are repaired and how cells maintain genome integrity.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://pubmed.ncbi.nlm.nih.gov/32234782/" target="_blank" rel="noopener">Mechanistic basis for microhomology identification and genome scarring by polymerase theta</a></div>
+            <div class="paper-journal">PNAS, 2020</div>
+            <p class="paper-note">
+                <span class="zh">阐明 Pol θ 介导的末端连接（TMEJ）如何从 3' 端扫描识别微同源序列、完成断端修复，以及其"模板化插入"如何在 BRCA1/2 突变肿瘤中留下特征性基因瘢痕——为针对同源重组缺陷型癌症的治疗策略提供机制依据。</span>
+                <span class="en">Shows how Pol θ-mediated end joining (TMEJ) scans from the 3′ terminus to find microhomologies, and how its "templated insertions" leave characteristic genomic scars in BRCA1/2-mutant tumors — mechanistic rationale for targeting HR-deficient cancers.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Henikoff -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Steve Henikoff</h3>
+            <span class="t-pill">CUT&amp;RUN · CUT&amp;Tag</span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">开发基于蛋白质-DNA 与 RNA-DNA 结合的染色质研究遗传工具。</span>
+            <span class="en">Development of genetic tools for chromatin study through protein-DNA and RNA-DNA binding.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">正契合我的兴趣——以工具开发解析端粒延伸相关转录因子及其结合的靶基因序列。</span>
+            <span class="en">Aligns with my interest in building tools to understand telomere-elongation-related transcription factors and the target gene sequences they bind.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://elifesciences.org/articles/21856" target="_blank" rel="noopener">An efficient targeted nuclease strategy for high-resolution mapping of DNA binding sites (CUT&amp;RUN)</a></div>
+            <div class="paper-journal">eLife, 2017 · Skene &amp; Henikoff</div>
+            <p class="paper-note">
+                <span class="zh">CUT&amp;RUN 以抗体靶向 MNase 原位释放蛋白-DNA 复合物，背景极低、分辨率高，测序量仅需 ChIP 的约 1/10——可直接用于绘制端粒相关转录因子的全基因组结合图谱。</span>
+                <span class="en">CUT&amp;RUN uses antibody-targeted MNase to release protein-DNA complexes in situ — ultra-low background, high resolution, ~1/10 the sequencing depth of ChIP; directly applicable to mapping telomere-related transcription factors genome-wide.</span>
+            </p>
+        </div>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://www.nature.com/articles/s41467-019-09982-5" target="_blank" rel="noopener">CUT&amp;Tag for efficient epigenomic profiling of small samples and single cells</a></div>
+            <div class="paper-journal">Nature Communications, 2019 · Kaya-Okur et al.</div>
+            <p class="paper-note">
+                <span class="zh">CUT&amp;Tag 用 Tn5 转座酶替换 MNase，把建库流程压缩到单细胞尺度——适合稀有样本（如早期肿瘤克隆）的表观基因组分析。</span>
+                <span class="en">CUT&amp;Tag swaps MNase for Tn5 transposase, compressing library prep to the single-cell scale — suited to epigenomic analysis of rare samples such as early tumor clones.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Smith -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Gerald Smith</h3>
+            <span class="t-pill"><span class="zh">减数分裂 DSB 修复</span><span class="en">Meiotic DSB Repair</span></span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">研究减数分裂过程中 DNA 双链断裂（DSB）形成与修复的分子机制。</span>
+            <span class="en">Molecular mechanisms of DNA double-strand break formation and repair during meiosis.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">为我理解癌症相关非整倍体（aneuploidy）的形成与预防提供全新视角。</span>
+            <span class="en">Provides me with a new perspective on the formation and prevention of cancer-induced aneuploidy.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://academic.oup.com/nar/article/42/1/359/2436979" target="_blank" rel="noopener">DNA intermediates of meiotic recombination in synchronous S. pombe at optimal temperature</a></div>
+            <div class="paper-journal">Nucleic Acids Research, 2014 · Hyppa et al.</div>
+            <p class="paper-note">
+                <span class="zh">在同步化裂殖酵母中直接物理检测减数分裂重组的 DNA 中间体，精确刻画从 DSB 形成到修复完成的时序——染色体断裂-修复失衡正是非整倍体的根源。</span>
+                <span class="en">Directly detects DNA intermediates of meiotic recombination in synchronized S. pombe, resolving the timeline from DSB formation to repair — the break-repair imbalance at the root of aneuploidy.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 方向二：蛋白质设计与编辑 ================= -->
+<section id="protein" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">蛋白质设计与编辑</span><span class="en">PROTEIN DESIGN &amp; ENGINEERING</span></h2>
+    </div>
+
+    <!-- Kuhlman -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Brian Kuhlman</h3>
+            <span class="t-pill"><span class="zh">计算蛋白设计 · 免疫治疗</span><span class="en">Computational Design · Immunotherapy</span></span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">计算蛋白质设计：设计稳定蛋白，并已成功应用于癌症免疫治疗（相关工作与 2024 年诺贝尔化学奖相关联）。</span>
+            <span class="en">Computational protein design: stable proteins, successfully applied to cancer immunotherapy (work connected to the 2024 Nobel Prize in Chemistry).</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">我认为基因治疗是通往"永生"的路径，而病毒载体与长寿相关蛋白设计都必须掌握蛋白质编辑技术——其实验室正是"设计稳定蛋白并推向治疗应用"的直接范本。</span>
+            <span class="en">Gene therapy is my path toward immortality, and both viral vectors and immortality-related protein design require protein engineering — his lab is the direct model of "designing stable proteins into therapeutic applications."</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10360382/" target="_blank" rel="noopener">De novo design of stable proteins that efficaciously inhibit oncogenic G proteins</a></div>
+            <div class="paper-journal">Science Advances, 2023</div>
+            <p class="paper-note">
+                <span class="zh">从头设计出可高效抑制致癌 G 蛋白的稳定蛋白，展示了计算设计直接转化为治疗候选分子的能力——正是改造长寿相关蛋白所需的技术路线。</span>
+                <span class="en">De novo-designed stable proteins that potently inhibit oncogenic G proteins — proof that computational design converts directly into therapeutic candidates, the very pipeline needed to engineer immortality-related proteins.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Fowler -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Douglas Fowler</h3>
+            <span class="t-pill">DMS · Variant Effect Maps</span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">针对特定功能的蛋白质设计与大规模筛选（深度突变扫描 / 变异效应图谱）。</span>
+            <span class="en">Design and screening of proteins for specific functions (deep mutational scanning / variant effect maps).</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">提升我改造"永生研究相关蛋白"的募集效率（recruitment efficiency）与结合亲和力（binding affinity）的知识储备。</span>
+            <span class="en">Strengthens my ability to tune the recruitment efficiency and binding affinity of my immortality-research-related proteins.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4410700/" target="_blank" rel="noopener">Deep mutational scanning: a new style of protein science</a></div>
+            <div class="paper-journal">Nature Methods, 2014 · Fowler &amp; Fields</div>
+            <p class="paper-note">
+                <span class="zh">DMS 通过"饱和突变文库 + 功能选择 + 测序定量"系统测定每个氨基酸替换对蛋白功能的影响——为定向优化结合亲和力与稳定性提供高通量数据引擎。</span>
+                <span class="en">DMS couples saturated mutagenesis libraries with functional selection and sequencing to score every amino-acid substitution — a high-throughput data engine for optimizing binding affinity and stability.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Kalogriopoulos -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Kalogriopoulos</h3>
+            <span class="t-pill"><span class="zh">合成 GPCR · 可编程细胞</span><span class="en">Synthetic GPCR · Programmable Cells</span></span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">工程化的合成可编程 GPCR 蛋白系统，按需调控特定细胞信号。</span>
+            <span class="en">Engineering synthetic, programmable GPCR-based protein systems that regulate specific signals.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">帮助我积累用于药物研发与免疫治疗的蛋白质工程知识。</span>
+            <span class="en">Helps me gain protein-engineering knowledge for drug discovery and immunotherapy.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://doi.org/10.1038/s41586-024-08282-3" target="_blank" rel="noopener">Synthetic GPCRs for programmable sensing and control of cell behaviour (PAGERs)</a></div>
+            <div class="paper-journal">Nature, 2025 · Kalogriopoulos et al.</div>
+            <p class="paper-note">
+                <span class="zh">PAGER 以纳米抗体"门控"GPCR 支架：抗原结合即解除自抑制，可响应十余种可溶性/细胞表面抗原，驱动转基因表达或内源信号——已展示控制 T 细胞迁移、诱导巨噬细胞分化、驱动治疗性抗体分泌等细胞治疗级应用。</span>
+                <span class="en">PAGER gates GPCR scaffolds with a nanobody: antigen binding relieves auto-inhibition, responding to a dozen+ soluble or surface antigens to drive transgene expression or endogenous signaling — demonstrated for T-cell migration control, macrophage differentiation, and therapeutic antibody secretion.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 方向三：肿瘤机制与靶向防治 ================= -->
+<section id="cancer" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">肿瘤机制与靶向防治</span><span class="en">CANCER MECHANISMS &amp; TARGETING</span></h2>
+    </div>
+
+    <!-- Dai -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Jun Dai</h3>
+            <span class="t-pill">Haspin · <span class="zh">皮肤癌靶向</span><span class="en">Skin Cancer Targeting</span></span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">研究皮肤病（尤其是皮肤癌）的治疗策略，包括 haspin 等有丝分裂激酶在细胞周期进程中的作用。</span>
+            <span class="en">Therapies for skin diseases, especially skin cancer — including the roles of mitotic kinases such as haspin in cell cycle progression.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">帮助我建立在肿瘤靶向与预防方向的知识与技能体系。</span>
+            <span class="en">Builds my knowledge and skills in cancer targeting and prevention.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5604444/" target="_blank" rel="noopener">Anti-Melanoma Activities of Haspin Inhibitor CHR-6494 Deployed as a Single Agent or in a Synergistic Combination with MEK Inhibitor</a></div>
+            <div class="paper-journal">Journal of Cancer, 2017 · Han et al.（Dai J. 通讯作者）</div>
+            <p class="paper-note">
+                <span class="zh">证明 haspin 抑制剂 CHR-6494 单药即可剂量依赖地抑制黑色素瘤生长并促进凋亡，与 MEK 抑制剂联用呈协同效应——有丝分裂激酶作为肿瘤治疗靶点的直接证据。</span>
+                <span class="en">Shows the haspin inhibitor CHR-6494 dose-dependently suppresses melanoma growth and induces apoptosis, synergizing with MEK inhibition — direct evidence for mitotic kinases as anti-cancer targets.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Collier -->
+    <div class="neu person-card">
+        <div class="person-head">
+            <h3>Dr. Collier</h3>
+            <span class="t-pill">SB 转座子 · <span class="zh">致癌基因筛选</span><span class="en">Oncogene Screens</span></span>
+        </div>
+        <p class="person-focus">
+            <span class="zh">利用工程化 SB（Sleeping Beauty）转座子在肿瘤中鉴定致癌基因。</span>
+            <span class="en">Using engineered Sleeping Beauty (SB) transposons to identify oncogenes in tumors.</span>
+        </p>
+        <p class="person-why">
+            <strong><span class="zh">与我的关联：</span><span class="en">Why it matters:</span></strong>
+            <span class="zh">为我提供体内（in vivo）遗传筛选的实验经验，揭示肿瘤起始与进展的机制。</span>
+            <span class="en">Gives me in vivo genetic-screen experience that reveals mechanisms of tumor initiation and progression.</span>
+        </p>
+        <div class="paper-box">
+            <span class="paper-tag"><span class="zh">代表论文</span><span class="en">PAPER</span></span>
+            <div class="paper-title"><a href="https://doi.org/10.1038/nature03681" target="_blank" rel="noopener">Cancer gene discovery in solid tumours using transposon-based somatic mutagenesis in the mouse</a></div>
+            <div class="paper-journal">Nature, 2005 · Collier et al.</div>
+            <p class="paper-note">
+                <span class="zh">将 T2/Onc 转座子设计为"致癌基因陷阱"，在小鼠体内随机插入以激活癌基因或失活抑癌基因，开创了实体瘤致癌基因体内筛选的范式。</span>
+                <span class="en">Engineered the T2/Onc transposon as an "oncogene trap" that mobilizes in mice to activate oncogenes or disrupt tumor suppressors — the founding paradigm of in vivo solid-tumor cancer-gene screens.</span>
+            </p>
+        </div>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国</span><span class="en">China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? '研究方向 · 张天生 Tiansheng Zhang'
+            : 'Research Interests · Tiansheng Zhang';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) {
+                var i = sections.indexOf(en.target);
+                links.forEach(function (a, j) { a.classList.toggle('active', i === j); });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) navIO.observe(s); });
+})();
+</script>
+</body>
+</html>

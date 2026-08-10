@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TBD · 张天生 Tiansheng Zhang</title>
+<meta name="description" content="职业路径的第三条线：TBD。The third track of the career path: TBD.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --radius: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+section { padding: 60px 0 8px; scroll-margin-top: 110px; }
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px; background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 19px; color: var(--text-muted); letter-spacing: 1px; }
+
+/* ---------- 顶部导航（页面切换） ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg); border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 13px; border-radius: 999px; white-space: nowrap; transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 悬停下拉（方向 / 职业路径） */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 168px; position: sticky; top: 96px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px; background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55); transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- 页头 ---------- */
+.page-hero { padding: 64px 0 6px; text-align: center; }
+.page-hero h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 10px; }
+.page-hero .sub { color: var(--text-muted); font-size: 15.5px; max-width: 760px; margin: 0 auto; }
+
+/* ---------- TBD 渐变线 ---------- */
+.tbd-card { padding: 40px 38px 34px; }
+.tbd-track {
+    height: 16px; border-radius: 999px;
+    background: linear-gradient(90deg, #4f7df9, #8b5cf6, #e056a0, #e0704f, #e8b93b, #3ba55d, #4f7df9);
+    box-shadow: 4px 4px 9px var(--shadow-dark), -4px -4px 9px var(--shadow-light);
+}
+.tbd-label { text-align: center; font-size: 22px; font-weight: 700; letter-spacing: 8px; color: var(--text-muted); margin-top: 22px; }
+
+/* ---------- 页脚 ---------- */
+footer { margin-top: 70px; padding: 34px 0 40px; text-align: center; color: var(--text-muted); font-size: 13.5px; }
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+@media (max-width: 860px) {
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .page-hero h1 { font-size: 30px; }
+    .tbd-card { padding: 28px 22px; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 顶部导航：页面切换 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link current" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= 页头 ================= -->
+<header class="page-hero container">
+    <h1>TBD</h1>
+    <p class="sub">
+        <span class="zh">职业路径的第三条线——唯一的内容就是 TBD 本身</span>
+        <span class="en">The third track of the career path — its only content is TBD itself</span>
+    </p>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#tbd-line" class="active">TBD</a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= 第三条线：TBD ================= -->
+<section id="tbd-line" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">第三条线</span><span class="en">THE THIRD TRACK</span></h2>
+    </div>
+    <div class="neu tbd-card">
+        <div class="tbd-track"></div>
+        <div class="tbd-label">TBD</div>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国·无锡</span><span class="en">Wuxi, China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? 'TBD · 张天生 Tiansheng Zhang'
+            : 'TBD · Tiansheng Zhang';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>

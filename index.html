@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张天生 Tiansheng Zhang · 临床实验室项目经理</title>
+<meta name="description" content="张天生 Tiansheng Zhang — 无锡观合医学检验所有限公司临床实验室项目经理（PM），前 LabCorp 早期药物研发 Senior Technician。Clinical Laboratory Project Manager & Preclinical Development Operations.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --radius: 20px;
+    --radius-sm: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 语言切换 ---------- */
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+/* ---------- 通用新拟态 ---------- */
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.neu-inset {
+    background: var(--bg);
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+    border-radius: var(--radius-sm);
+}
+.neu-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: box-shadow .2s ease, transform .2s ease;
+    font-family: inherit;
+}
+.neu-btn:hover { transform: translateY(-2px); }
+.neu-btn:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    transform: translateY(0);
+}
+.neu-btn.plain { color: var(--text); }
+
+.chip {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px 6px 5px 0;
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+section { padding: 72px 0 8px; scroll-margin-top: 110px; }
+
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 34px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px;
+    background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 20px; color: var(--text-muted); letter-spacing: 1px; }
+
+/* ---------- 导航 ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg);
+    border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 14px; border-radius: 999px; white-space: nowrap;
+    transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 方向下拉：悬停显示 工具/图示 */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 150px; position: sticky; top: 96px; padding-top: 72px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- Hero ---------- */
+.hero { padding: 84px 0 10px; text-align: center; }
+.avatar-ring {
+    width: 168px; height: 168px; margin: 0 auto 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 10px 10px 22px var(--shadow-dark), -10px -10px 22px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.avatar-core {
+    width: 132px; height: 132px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px; font-weight: 700; color: var(--accent);
+    box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+    user-select: none; overflow: hidden;
+}
+.avatar-core img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero h1 { font-size: 40px; letter-spacing: 1px; margin-bottom: 6px; }
+.hero h1 .en { letter-spacing: .5px; }
+.hero .role { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+.hero .role-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; letter-spacing: .5px; }
+.hero .tagline {
+    max-width: 680px; margin: 0 auto 30px;
+    color: var(--text-muted); font-size: 15.5px;
+}
+.hero-cta { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+.stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 22px; margin-top: 64px;
+}
+.stat-card { padding: 26px 14px 20px; text-align: center; transition: transform .25s ease, box-shadow .25s ease; }
+.stat-card:hover { transform: translateY(-4px); }
+.stat-num { font-size: 34px; font-weight: 800; color: var(--accent); line-height: 1.2; }
+.stat-num small { font-size: 20px; }
+.stat-label { font-size: 13.5px; color: var(--text-muted); margin-top: 6px; }
+
+/* ---------- 关于 ---------- */
+.about-card { padding: 36px 40px; }
+.about-card p { font-size: 15.5px; color: var(--text); }
+.about-card p + p { margin-top: 14px; }
+.about-card strong { color: var(--accent-deep); }
+
+/* ---------- 经历时间线 ---------- */
+.timeline { position: relative; padding-left: 34px; }
+.timeline::before {
+    content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 8px;
+    border-radius: 4px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+.t-item { position: relative; margin-bottom: 30px; }
+.t-dot {
+    position: absolute; left: -34px; top: 30px; width: 24px; height: 24px;
+    border-radius: 50%; background: var(--bg);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    display: flex; align-items: center; justify-content: center;
+}
+.t-dot::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.t-card { padding: 28px 32px; transition: transform .25s ease; }
+.t-card:hover { transform: translateY(-3px); }
+.t-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 4px; }
+.t-role { font-size: 19px; font-weight: 700; }
+.t-role .en { font-size: 16px; }
+.t-company { font-size: 14.5px; color: var(--text-muted); }
+.t-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+.t-pill {
+    font-size: 12.5px; color: var(--accent-deep); padding: 4px 14px; border-radius: 999px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+.t-card ul { list-style: none; }
+.t-card li {
+    position: relative; padding-left: 22px; margin-bottom: 10px;
+    font-size: 14.5px; color: var(--text);
+}
+.t-card li::before {
+    content: ""; position: absolute; left: 2px; top: 11px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light),
+                0 0 0 2px rgba(79, 125, 249, .35);
+}
+
+/* ---------- 技能 ---------- */
+.skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.skill-card { padding: 28px 30px; }
+.skill-card h3 { font-size: 17px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.skill-card h3 .en { font-size: 14px; color: var(--text-muted); }
+.skill-icon {
+    width: 14px; height: 14px; border-radius: 50%; flex: none;
+    background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 教育 ---------- */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.edu-card { padding: 28px 30px; }
+.edu-school { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.edu-school .en { font-size: 14.5px; }
+.edu-degree { font-size: 14.5px; color: var(--accent-deep); font-weight: 600; margin: 6px 0; }
+.edu-date { font-size: 13px; color: var(--text-muted); }
+.poster-card { padding: 28px 30px; display: flex; gap: 20px; align-items: flex-start; }
+.poster-badge {
+    flex: none; width: 54px; height: 54px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent); font-size: 24px; font-weight: 800;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+}
+.poster-card h3 { font-size: 16.5px; margin-bottom: 6px; }
+.poster-card p { font-size: 14px; color: var(--text-muted); }
+
+/* ---------- 联系 ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.contact-card { padding: 34px 32px; text-align: center; }
+.contact-icon {
+    width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: var(--accent);
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+}
+.contact-card h3 { font-size: 17px; margin-bottom: 6px; }
+.contact-card p { font-size: 14.5px; color: var(--text-muted); margin-bottom: 18px; word-break: break-all; }
+
+/* ---------- 页脚 ---------- */
+footer {
+    margin-top: 80px; padding: 34px 0 40px; text-align: center;
+    color: var(--text-muted); font-size: 13.5px;
+}
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 860px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .skill-grid, .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .hero h1 { font-size: 32px; }
+    .about-card, .t-card { padding: 24px 22px; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 导航 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link current" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= Hero ================= -->
+<header class="hero container">
+    <div class="avatar-ring"><div class="avatar-core"><img src="avatar.jpg" alt="张天生 Tiansheng Zhang"></div></div>
+    <h1><span class="zh">张天生</span><span class="en">Tiansheng Zhang</span></h1>
+    <div class="role">
+        <span class="zh">临床实验室项目经理 · 无锡观合医学检验所有限公司</span>
+        <span class="en">Clinical Laboratory Project Manager · Wuxi Guanhe Medical Laboratory Co., Ltd.</span>
+    </div>
+    <div class="role-sub">
+        <span class="zh">早期药物研发运营 · 临床前研究 · 中心实验室项目管理</span>
+        <span class="en">Early Drug Development Operations · Preclinical Research · Central Lab PM</span>
+    </div>
+    <p class="tagline">
+        <span class="zh">从美国 LabCorp 早期药物研发一线，到无锡观合医学检验所临床实验室项目管理 —— 专注多项目并行推进、质量合规与跨团队协同，让每一项研究按方案、按时间线稳健落地。</span>
+        <span class="en">From the front line of early drug development at LabCorp (USA) to clinical laboratory project management at Wuxi Guanhe Medical Laboratory — focused on parallel multi-study execution, quality compliance, and cross-functional collaboration, keeping every study on protocol and on schedule.</span>
+    </p>
+    <div class="hero-cta">
+        <a class="neu-btn" href="#contact"><span class="zh">联系我</span><span class="en">Get in Touch</span></a>
+        <a class="neu-btn plain" href="#experience"><span class="zh">查看经历</span><span class="en">View Experience</span></a>
+    </div>
+
+    <div class="stats">
+        <div class="neu stat-card reveal">
+            <div class="stat-num">8</div>
+            <div class="stat-label"><span class="zh">在管临床试验项目</span><span class="en">Active Clinical Projects</span></div>
+        </div>
+        <div class="neu stat-card reveal">
+            <div class="stat-num">40<small>+</small></div>
+            <div class="stat-label"><span class="zh">累计参与研究</span><span class="en">Studies Supported</span></div>
+        </div>
+        <div class="neu stat-card reveal">
+            <div class="stat-num">3</div>
+            <div class="stat-label"><span class="zh">年美国 CRO 经验</span><span class="en">Years in US CRO</span></div>
+        </div>
+        <div class="neu stat-card reveal">
+            <div class="stat-num">2</div>
+            <div class="stat-label"><span class="zh">理学双学士学位</span><span class="en">Dual B.S. Degrees</span></div>
+        </div>
+    </div>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#about" class="active"><span class="zh">关于</span><span class="en">About</span></a>
+            <a href="#experience"><span class="zh">经历</span><span class="en">Experience</span></a>
+            <a href="#skills"><span class="zh">能力</span><span class="en">Skills</span></a>
+            <a href="#education"><span class="zh">教育</span><span class="en">Education</span></a>
+            <a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= 关于 ================= -->
+<section id="about" class="container reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">关于我</span><span class="en">ABOUT ME</span></h2>
+    </div>
+    <div class="neu about-card">
+        <p>
+            <span class="zh">现任职于<strong>无锡观合医学检验所有限公司</strong>，担任<strong>临床实验室项目经理（PM）</strong>，并行管理 <strong>8 个</strong>临床试验项目，覆盖项目全生命周期：从启动前准备（服务需求、实验室时间线）、文档编写及管理（中心实验室操作手册）、中心启动与培训，到样本接收检测、数据传输，直至项目关闭与归档；同时为内部实验室与国外客户科学团队提供中英文翻译支持，整体管理合规并严格符合 <strong>GCP</strong> 要求。</span>
+            <span class="en">Currently a <strong>Clinical Laboratory Project Manager (PM)</strong> at <strong>Wuxi Guanhe Medical Laboratory Co., Ltd.</strong> (Wuxi, China), managing <strong>8 concurrent</strong> clinical trial projects across their full lifecycle — from pre-startup preparation (service requirements, lab timelines), document authoring &amp; management (central laboratory operations manuals), and site initiation &amp; training, to sample reception &amp; testing, data transfer, and final close-out &amp; archiving. I also provide Chinese-English translation support between internal lab teams and overseas sponsors' scientific teams, keeping overall management compliant and strictly aligned with <strong>GCP</strong>.</span>
+        </p>
+        <p>
+            <span class="zh">此前在美国麦迪逊 <strong>LabCorp Early Drug Development</strong> 工作三年，平均每年并行支持至少 <strong>7 个</strong>研究、累计参与约 <strong>40 个</strong>研究，所有研究活动均在 <strong>GLP</strong> 规范下执行；熟悉 CRO 协作模式、项目时间线跟踪与偏差（Deviation）管理，参与 Cell &amp; Gene Therapy 及多项肿瘤相关药物研发项目，具备 SOP 合规与多物种动物模型研究的一线经验。</span>
+            <span class="en">Previously spent three years at <strong>LabCorp Early Drug Development</strong> (Madison, WI, USA), supporting <strong>7+ parallel studies per year</strong> and <strong>~40 studies</strong> in total — all conducted under <strong>GLP</strong>. Deeply familiar with CRO collaboration, timeline tracking, and deviation management, with hands-on experience in Cell &amp; Gene Therapy and oncology programs, SOP compliance, and multi-species in vivo research.</span>
+        </p>
+        <p>
+            <span class="zh">贯穿中美两段经历，我积累了以合规为底线的项目管理与实验执行经验——临床试验阶段的 <strong>GCP</strong>、早期研发阶段的 <strong>GLP</strong>，质量与合规始终是我推进每一个项目的前提。</span>
+            <span class="en">Across my U.S. and China roles I have built compliance-first experience in both project management and study execution — <strong>GCP</strong> for clinical trials and <strong>GLP</strong> for early development. Quality and compliance are always the premise of how I run every project.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ================= 工作经历 ================= -->
+<section id="experience" class="container reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">工作经历</span><span class="en">EXPERIENCE</span></h2>
+    </div>
+
+    <div class="timeline">
+        <!-- 无锡观合医学检验所（现任） -->
+        <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="neu t-card">
+                <div class="t-top">
+                    <span class="t-role">
+                        <span class="zh">临床实验室项目经理（PM）</span>
+                        <span class="en">Clinical Laboratory Project Manager (PM)</span>
+                    </span>
+                    <span class="t-company">
+                        <span class="zh">无锡观合医学检验所有限公司</span>
+                        <span class="en">Wuxi Guanhe Medical Laboratory Co., Ltd.</span>
+                    </span>
+                </div>
+                <div class="t-meta">
+                    <span class="t-pill">2026.04 – <span class="zh">至今</span><span class="en">Present</span></span>
+                    <span class="t-pill"><span class="zh">中国·无锡</span><span class="en">Wuxi, China</span></span>
+                </div>
+                <ul>
+                    <li>
+                        <span class="zh">并行管理 8 个临床试验中心实验室项目，覆盖启动前准备（服务需求、实验室时间线）、文档编写及管理（中心实验室操作手册）到项目关闭（归档）的全生命周期</span>
+                        <span class="en">Manage 8 concurrent central-lab clinical trial projects across the full lifecycle: pre-startup preparation (service requirements, lab timelines), document authoring &amp; management (central laboratory operations manuals), through close-out (archiving)</span>
+                    </li>
+                    <li>
+                        <span class="zh">主导中心启动阶段的培训与结算协调，保障各临床中心按计划启动与入组</span>
+                        <span class="en">Lead site-initiation training and settlement coordination, keeping site activation and enrollment on schedule</span>
+                    </li>
+                    <li>
+                        <span class="zh">负责临床实验阶段的样本接收、检测执行与常规数据传输管理，依托 LIMS 保障数据质量与时效</span>
+                        <span class="en">Oversee sample reception, testing, and routine data transfer during the clinical phase, ensuring data quality and timeliness via LIMS</span>
+                    </li>
+                    <li>
+                        <span class="zh">作为客户与内部实验室团队之间的核心接口，推进客户交接与跨部门协同</span>
+                        <span class="en">Serve as the core interface between sponsors and internal lab teams, driving client handover and cross-department collaboration</span>
+                    </li>
+                    <li>
+                        <span class="zh">为内部实验室与国外客户科学团队提供中英文翻译支持，确保方案要求、技术细节与检测结果的沟通准确一致</span>
+                        <span class="en">Provide Chinese-English translation support between internal lab teams and overseas sponsors' scientific teams, ensuring accurate, consistent communication of protocol requirements, technical details, and results</span>
+                    </li>
+                    <li>
+                        <span class="zh">以合规为底线统筹整体项目管理，全流程严格符合 GCP 要求</span>
+                        <span class="en">Anchor overall project management in compliance, with all processes strictly aligned to GCP requirements</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LabCorp Senior Technician -->
+        <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="neu t-card">
+                <div class="t-top">
+                    <span class="t-role">
+                        <span class="zh">Senior Technician ｜ 早期药物研发（运营与执行支持）</span>
+                        <span class="en">Senior Technician · Early Drug Development (Operations &amp; Execution)</span>
+                    </span>
+                    <span class="t-company">LabCorp Early Drug Development</span>
+                </div>
+                <div class="t-meta">
+                    <span class="t-pill">2025.03 – 2026.02</span>
+                    <span class="t-pill"><span class="zh">美国 · 麦迪逊</span><span class="en">Madison, WI, USA</span></span>
+                </div>
+                <ul>
+                    <li>
+                        <span class="zh">支持多个早期药物研发项目的执行与推进，确保研究活动符合已批准的 protocol、GLP 规范、项目时间线及质量要求</span>
+                        <span class="en">Supported execution of multiple early drug development programs, ensuring all study activities met approved protocols, GLP standards, timelines, and quality requirements</span>
+                    </li>
+                    <li>
+                        <span class="zh">持续跟踪 study 执行进度，及时识别 protocol / SOP 偏差并向 Study Director 汇报；参与研究文件与数据的 QC 审核，主动发现并解决问题，降低偏差发生风险</span>
+                        <span class="en">Tracked study progress, identified protocol / SOP deviations and reported to Study Directors; performed QC review of study documents and data, proactively resolving issues to reduce deviation risk</span>
+                    </li>
+                    <li>
+                        <span class="zh">支持 Cell &amp; Gene Therapy 等高复杂度项目执行，把控关键时间窗口与 SOP 要求</span>
+                        <span class="en">Supported highly complex Cell &amp; Gene Therapy programs, managing critical time windows and SOP requirements</span>
+                    </li>
+                    <li>
+                        <span class="zh">在公司业务量最大的部门长期承担 second shift，在监管资源有限的情况下独立处理实验异常与紧急事件，保障实验、动物福利及项目连续性</span>
+                        <span class="en">Worked second shift long-term in the company's highest-volume department, independently handling experimental anomalies and emergencies with limited oversight — safeguarding studies, animal welfare, and project continuity</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LabCorp Study Technician -->
+        <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="neu t-card">
+                <div class="t-top">
+                    <span class="t-role">
+                        <span class="zh">Study Technician ｜ 早期药物研发</span>
+                        <span class="en">Study Technician · Early Drug Development</span>
+                    </span>
+                    <span class="t-company">LabCorp Early Drug Development</span>
+                </div>
+                <div class="t-meta">
+                    <span class="t-pill">2023.03 – 2025.03</span>
+                    <span class="t-pill"><span class="zh">美国 · 麦迪逊</span><span class="en">Madison, WI, USA</span></span>
+                </div>
+                <ul>
+                    <li>
+                        <span class="zh">在 GLP 规范下每年并行支持至少 7 个 preclinical / early-stage 研究项目，包括肿瘤相关候选药物研发</span>
+                        <span class="en">Supported 7+ concurrent preclinical / early-stage studies per year under GLP, including oncology drug candidates</span>
+                    </li>
+                    <li>
+                        <span class="zh">对接 Study Director 及跨职能团队，协助研究启动、执行监控及关键节点推进；识别、记录并上报 protocol / SOP 偏差，支持偏差管理流程</span>
+                        <span class="en">Coordinated with Study Directors and cross-functional teams on study initiation, execution monitoring, and milestone delivery; identified, documented, and reported protocol / SOP deviations</span>
+                    </li>
+                    <li>
+                        <span class="zh">跨团队协作药理、毒理、生物分析等职能，支持基于不同动物模型的研究执行与数据交付，确保关键节点按计划完成</span>
+                        <span class="en">Collaborated across pharmacology, toxicology, and bioanalysis functions, supporting multi-species in vivo studies and on-time data delivery at key milestones</span>
+                    </li>
+                    <li>
+                        <span class="zh">作为 certified technician，在突发情况下（如兽医或 SD 不在场）可执行经授权的人道处置（humane sacrifice），保障动物福利及研究合规性</span>
+                        <span class="en">As a certified technician, performed authorized humane endpoints in emergencies (e.g., veterinarian or SD off-site), safeguarding animal welfare and study compliance</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 核心能力 ================= -->
+<section id="skills" class="container reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">核心能力</span><span class="en">CORE COMPETENCIES</span></h2>
+    </div>
+    <div class="skill-grid">
+        <div class="neu skill-card">
+            <h3><span class="skill-icon"></span><span class="zh">临床试验项目管理</span><span class="en">Clinical Trial PM</span></h3>
+            <div>
+                <span class="chip"><span class="zh">项目全生命周期管理</span><span class="en">Full-lifecycle Management</span></span>
+                <span class="chip"><span class="zh">多项目并行管理</span><span class="en">Multi-project Management</span></span>
+                <span class="chip"><span class="zh">中心启动与培训</span><span class="en">Site Initiation &amp; Training</span></span>
+                <span class="chip"><span class="zh">样本与数据管理</span><span class="en">Sample &amp; Data Management</span></span>
+                <span class="chip">LIMS</span>
+                <span class="chip"><span class="zh">客户与跨部门协同</span><span class="en">Client &amp; Cross-team Collaboration</span></span>
+            </div>
+        </div>
+        <div class="neu skill-card">
+            <h3><span class="skill-icon"></span><span class="zh">研发运营支持</span><span class="en">R&amp;D Operations</span></h3>
+            <div>
+                <span class="chip"><span class="zh">早期药物研发运营</span><span class="en">Early Development Operations</span></span>
+                <span class="chip"><span class="zh">项目执行与时间线跟踪</span><span class="en">Execution &amp; Timeline Tracking</span></span>
+                <span class="chip"><span class="zh">资源协调与排期</span><span class="en">Resource &amp; Scheduling</span></span>
+                <span class="chip"><span class="zh">CRO / 外包协作</span><span class="en">CRO / Vendor Collaboration</span></span>
+                <span class="chip"><span class="zh">风险识别与现场决策</span><span class="en">Risk &amp; On-site Decisions</span></span>
+            </div>
+        </div>
+        <div class="neu skill-card">
+            <h3><span class="skill-icon"></span><span class="zh">质量与合规</span><span class="en">Quality &amp; Compliance</span></h3>
+            <div>
+                <span class="chip">SOP / GLP / GCP</span>
+                <span class="chip"><span class="zh">偏差识别与上报</span><span class="en">Deviation Management</span></span>
+                <span class="chip"><span class="zh">QC 审核</span><span class="en">QC Review</span></span>
+                <span class="chip"><span class="zh">数据完整性</span><span class="en">Data Integrity</span></span>
+                <span class="chip"><span class="zh">动物福利与伦理</span><span class="en">Animal Welfare &amp; Ethics</span></span>
+            </div>
+        </div>
+        <div class="neu skill-card">
+            <h3><span class="skill-icon"></span><span class="zh">专业领域</span><span class="en">Domain Expertise</span></h3>
+            <div>
+                <span class="chip">Cell &amp; Gene Therapy</span>
+                <span class="chip"><span class="zh">肿瘤相关研究</span><span class="en">Oncology Studies</span></span>
+                <span class="chip"><span class="zh">多物种动物模型（小鼠 / 大鼠 / 犬 / NHP）</span><span class="en">Multi-species Models (mouse / rat / canine / NHP)</span></span>
+                <span class="chip"><span class="zh">中英双语工作环境</span><span class="en">Bilingual CN / EN</span></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 教育背景 ================= -->
+<section id="education" class="container reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">教育与学术</span><span class="en">EDUCATION &amp; RESEARCH</span></h2>
+    </div>
+    <div class="edu-grid">
+        <div class="neu edu-card">
+            <div class="edu-school">
+                <span class="zh">威斯康星大学苏必利尔分校</span>
+                <span class="en">University of Wisconsin–Superior</span>
+            </div>
+            <div class="edu-degree">
+                <span class="zh">理学学士（B.S.）｜ 生物科学</span>
+                <span class="en">Bachelor of Science · Biological Sciences</span>
+            </div>
+            <div class="edu-date">2019.01 – 2022.12</div>
+        </div>
+        <div class="neu edu-card">
+            <div class="edu-school">
+                <span class="zh">威斯康星大学苏必利尔分校</span>
+                <span class="en">University of Wisconsin–Superior</span>
+            </div>
+            <div class="edu-degree">
+                <span class="zh">理学学士（B.S.）｜ 普通化学（双学位）</span>
+                <span class="en">Bachelor of Science · General Chemistry (Dual Degree)</span>
+            </div>
+            <div class="edu-date">2019.01 – 2022.12</div>
+        </div>
+    </div>
+    <div class="neu poster-card">
+        <div class="poster-badge">P</div>
+        <div>
+            <h3>
+                <span class="zh">第一作者 Poster ｜ Identify The Factor of Reproductive Disruption In Drosophila Melanogaster</span>
+                <span class="en">First-author Poster · Identify The Factor of Reproductive Disruption In Drosophila Melanogaster</span>
+            </h3>
+            <p>
+                <span class="zh">本科阶段参与为期两年的实验研究项目，主要负责果蝇（Drosophila）模型相关的实验设计、操作、数据整理以及成果发表，研究 Poster 以第一作者身份发表于 Research in the Rotunda 和 64th Annual Drosophila Research Conference。</span>
+                <span class="en">Two-year undergraduate research project on Drosophila models — responsible for experimental design, execution, data curation, and publication. Findings were presented as a first-author poster at Research in the Rotunda and the 64th Annual Drosophila Research Conference.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 联系 ================= -->
+<section id="contact" class="container reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">联系我</span><span class="en">GET IN TOUCH</span></h2>
+    </div>
+    <div class="contact-grid">
+        <div class="neu contact-card">
+            <div class="contact-icon">@</div>
+            <h3><span class="zh">电子邮箱</span><span class="en">Email</span></h3>
+            <p>tiansheng.zhang@outlook.com</p>
+            <a class="neu-btn" href="mailto:tiansheng.zhang@outlook.com"><span class="zh">发送邮件</span><span class="en">Send Email</span></a>
+        </div>
+        <div class="neu contact-card">
+            <div class="contact-icon">⌖</div>
+            <h3><span class="zh">所在城市</span><span class="en">Location</span></h3>
+            <p><span class="zh">中国 ｜ 欢迎就临床试验项目管理、中心实验室运营与合作机会交流</span><span class="en">China · Open to conversations on clinical trial project management, central lab operations, and new opportunities</span></p>
+            <a class="neu-btn plain" href="#about"><span class="zh">了解更多</span><span class="en">Learn More</span></a>
+        </div>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国</span><span class="en">China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? '张天生 Tiansheng Zhang · 临床实验室项目经理'
+            : 'Tiansheng Zhang · Clinical Laboratory Project Manager';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    // 滚动显现动画
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // 导航高亮当前区块
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) {
+                var i = sections.indexOf(en.target);
+                links.forEach(function (a, j) { a.classList.toggle('active', i === j); });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) navIO.observe(s); });
+})();
+</script>
+</body>
+</html>

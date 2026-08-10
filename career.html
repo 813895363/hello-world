@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>职业路线 · 张天生 Tiansheng Zhang</title>
+<meta name="description" content="张天生的职业路线：以 FDA 标准为核心，横向覆盖药企、CRO、CDMO 三种组织形态，纵向延伸至医药研发全流程掌舵人。Career route of Tiansheng Zhang built on FDA standards across pharma, CRO and CDMO.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --green: #3ba55d;
+    --orange: #e0704f;
+    --radius: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+section { padding: 60px 0 8px; scroll-margin-top: 110px; }
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px; background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 19px; color: var(--text-muted); letter-spacing: 1px; }
+.section-note { font-size: 14px; color: var(--text-muted); margin-bottom: 26px; max-width: 860px; }
+.section-note strong { color: var(--accent-deep); }
+
+/* ---------- 顶部导航（页面切换） ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg); border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 13px; border-radius: 999px; white-space: nowrap; transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 悬停下拉（方向 / 职业路径） */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 168px; position: sticky; top: 96px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px; background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55); transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- 页头 ---------- */
+.page-hero { padding: 64px 0 6px; text-align: center; }
+.page-hero h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 10px; }
+.page-hero .sub { color: var(--text-muted); font-size: 15.5px; max-width: 760px; margin: 0 auto; }
+
+/* ---------- 时间线轨道 ---------- */
+.tl-track { display: flex; }
+.tl-node { flex: 1 1 0; min-width: 0; position: relative; padding-top: 32px; }
+.tl-node::before, .tl-node::after {
+    content: ''; position: absolute; top: 10px; height: 4px; border-radius: 2px;
+    background: var(--shadow-dark);
+}
+.tl-node::before { left: 0; width: calc(50% - 11px); }
+.tl-node::after { right: 0; width: calc(50% - 11px); }
+.tl-node:first-child::before, .tl-node:last-child::after { display: none; }
+.tl-node.done::before, .tl-node.done::after { background: var(--accent); }
+.tl-dot {
+    position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
+    width: 18px; height: 18px; border-radius: 50%; background: var(--bg);
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+.tl-node.done .tl-dot {
+    background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+}
+.tl-node.now .tl-dot { outline: 4px solid rgba(79, 125, 249, 0.3); }
+
+.tl-card {
+    margin: 0 7px; padding: 15px 15px 13px; border-radius: 16px; height: 100%;
+    overflow-wrap: break-word;
+}
+.tl-badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.badge-now { font-size: 11px; font-weight: 700; color: #fff; background: var(--green); border-radius: 6px; padding: 2px 9px; }
+.badge-fork { font-size: 11px; font-weight: 700; color: #fff; background: var(--orange); border-radius: 6px; padding: 2px 9px; }
+.badge-goal { font-size: 11px; font-weight: 700; color: #fff; background: var(--accent); border-radius: 6px; padding: 2px 9px; }
+.badge-todo {
+    font-size: 11px; font-weight: 600; color: var(--text-muted); border-radius: 6px; padding: 2px 9px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+.tl-stage { font-weight: 700; font-size: 14px; line-height: 1.45; }
+.tl-stage .en { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+.tl-time {
+    display: inline-block; font-size: 11.5px; color: var(--accent-deep);
+    padding: 2px 10px; border-radius: 999px; margin: 6px 0; max-width: 100%;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+.tl-desc { font-size: 12.5px; color: var(--text-muted); }
+
+/* ---------- 三路线分岔（横向扩展） ---------- */
+.branch-row { display: flex; align-items: stretch; gap: 14px; margin-bottom: 22px; }
+.branch-label {
+    flex: 0 0 126px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 10px 8px; border-radius: 14px;
+    font-weight: 700; font-size: 13.5px; line-height: 1.5; overflow-wrap: break-word;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.branch-label .en { font-size: 10.5px; font-weight: 600; }
+.branch-row .tl-track { flex: 1; min-width: 0; }
+.branch-row .tl-card { height: 100%; }
+.b1 .branch-label { color: var(--accent-deep); }
+.b1 .tl-node::before, .b1 .tl-node::after { background: var(--accent); }
+.b1 .tl-dot { background: var(--accent); box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light); }
+.b2 .branch-label { color: var(--green); }
+.b2 .tl-node::before, .b2 .tl-node::after { background: var(--green); }
+.b2 .tl-dot { background: var(--green); box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light); }
+.b3 .branch-label { color: var(--orange); }
+.b3 .tl-node::before, .b3 .tl-node::after { background: var(--orange); }
+.b3 .tl-dot { background: var(--orange); box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light); }
+
+/* 汇聚提示 */
+.converge { display: flex; align-items: center; gap: 14px; margin: 30px 0 6px; }
+.converge .cv-line {
+    flex: 1; height: 4px; border-radius: 2px;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+}
+.converge .cv-chip {
+    font-size: 12.5px; font-weight: 600; color: var(--accent-deep);
+    padding: 6px 16px; border-radius: 999px; white-space: nowrap;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 页脚 ---------- */
+footer { margin-top: 70px; padding: 34px 0 40px; text-align: center; color: var(--text-muted); font-size: 13.5px; }
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+@media (max-width: 860px) {
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .page-hero h1 { font-size: 30px; }
+    .tl-track { overflow-x: auto; padding-bottom: 10px; }
+    .tl-node { min-width: 200px; }
+    .branch-row { flex-direction: column; align-items: stretch; }
+    .branch-label { flex: none; }
+    .converge .cv-chip { white-space: normal; text-align: center; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 顶部导航：页面切换 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link current" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= 页头 ================= -->
+<header class="page-hero container">
+    <h1><span class="zh">职业路线</span><span class="en">Career Route</span></h1>
+    <p class="sub">
+        <span class="zh">以 FDA 标准为核心：纵向从临床实验室 PM 延伸至医药研发全流程掌舵人，横向在总监级展开药企 / CRO / CDMO 三种组织形态的可选路线</span>
+        <span class="en">Built on FDA standards as capability anchors: vertically from clinical-lab PM to helming the entire R&amp;D pipeline, horizontally branching at director level across pharma, CRO and CDMO</span>
+    </p>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#main-line" class="active"><span class="zh">主线 · 起步</span><span class="en">Main Track</span></a>
+            <a href="#branches"><span class="zh">三路线分岔</span><span class="en">Branches</span></a>
+            <a href="#converge-line"><span class="zh">汇聚至终点</span><span class="en">Convergence</span></a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= 主线：起步段 ================= -->
+<section id="main-line" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">主线 · 起步段</span><span class="en">MAIN TRACK · FIRST STOPS</span></h2>
+    </div>
+    <p class="section-note">
+        <span class="zh">目标：<strong>逐站吃透医药研发全流程，最终成为统筹全流程的研发掌舵人——整个医药研发中最重要的角色</strong>。每一站以对应 FDA 阶段的标准（GLP / GCP / GMP / IND / NDA）作为核心能力背书。</span>
+        <span class="en">The goal: <strong>master every stage of the pipeline and ultimately helm the entire R&amp;D process — the most pivotal role in drug development</strong>. Each stop is anchored to the FDA standard of its stage (GLP / GCP / GMP / IND / NDA).</span>
+    </p>
+
+    <div class="tl-track">
+        <div class="tl-node done now">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-now"><span class="zh">现在</span><span class="en">NOW</span></span></div>
+                <div class="tl-stage"><span class="zh">临床实验室项目经理（PM）</span><span class="en">Clinical Laboratory PM</span></div>
+                <div class="tl-time">2026 – <span class="zh">至今 · 观合</span><span class="en">Present · Guanhe</span></div>
+                <div class="tl-desc"><span class="zh">8 个在管项目全生命周期，中外团队翻译支持</span><span class="en">Full lifecycle of 8 concurrent studies; CN-EN liaison</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-todo"><span class="zh">规划</span><span class="en">PLAN</span></span></div>
+                <div class="tl-stage"><span class="zh">高级项目经理 / 项目群负责人</span><span class="en">Senior PM / Program Lead</span></div>
+                <div class="tl-time">~2027 – 2029</div>
+                <div class="tl-desc"><span class="zh">牵头 I / II 期项目群，带团队，参与 IND 申报支持</span><span class="en">Lead Phase I/II program clusters and a team; support IND filings</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-fork"><span class="zh">分岔口</span><span class="en">FORK</span></span></div>
+                <div class="tl-stage"><span class="zh">职业分岔口 · 选择组织形态</span><span class="en">Fork: Pick an Organization Type</span></div>
+                <div class="tl-time">~2029</div>
+                <div class="tl-desc"><span class="zh">在药企 / CRO / CDMO 中选择下一站，进入总监级——三条路线见下方</span><span class="en">Choose the next stop among pharma / CRO / CDMO at director level — three routes below</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 三路线分岔 ================= -->
+<section id="branches" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">三路线分岔 · 横向扩展</span><span class="en">THREE ROUTES · HORIZONTAL EXPANSION</span></h2>
+    </div>
+    <p class="section-note">
+        <span class="zh">同一能力底座，三种组织形态任选：<strong>药企</strong>深扎管线与临床开发策略，<strong>CRO</strong> 历练多申办方、多项目的规模化交付，<strong>CDMO</strong> 补齐 CMC 与 GMP 生产端——三者互为补充，都是通往全流程的完整拼图。</span>
+        <span class="en">Same foundation, three organization types: <strong>pharma</strong> for pipeline &amp; clinical development strategy, <strong>CRO</strong> for multi-sponsor delivery at scale, <strong>CDMO</strong> for the CMC &amp; GMP manufacturing end — complementary pieces of the full-pipeline puzzle.</span>
+    </p>
+
+    <!-- 药企路线 -->
+    <div class="branch-row b1">
+        <div class="branch-label"><span class="zh">药企路线</span><span class="en">Pharma</span></div>
+        <div class="tl-track">
+            <div class="tl-node">
+                <div class="tl-dot"></div>
+                <div class="neu tl-card">
+                    <div class="tl-stage"><span class="zh">临床运营总监</span><span class="en">Director, Clinical Operations</span></div>
+                    <div class="tl-time">~2029 – 2033</div>
+                    <div class="tl-desc"><span class="zh">I–III 期管线运营，跨部门协调与供应商管理</span><span class="en">Phase I–III portfolio operations, cross-functional &amp; vendor management</span></div>
+                </div>
+            </div>
+            <div class="tl-node">
+                <div class="tl-dot"></div>
+                <div class="neu tl-card">
+                    <div class="tl-stage"><span class="zh">临床开发负责人</span><span class="en">Head of Clinical Development</span></div>
+                    <div class="tl-time">~2033 – 2036</div>
+                    <div class="tl-desc"><span class="zh">临床开发策略，IND 到 III 期端到端负责</span><span class="en">Clinical development strategy, IND-to-Phase-III end to end</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRO 路线 -->
+    <div class="branch-row b2">
+        <div class="branch-label"><span class="zh">CRO 路线</span><span class="en">CRO</span></div>
+        <div class="tl-track">
+            <div class="tl-node">
+                <div class="tl-dot"></div>
+                <div class="neu tl-card">
+                    <div class="tl-stage"><span class="zh">项目管理总监</span><span class="en">Director, Project Management</span></div>
+                    <div class="tl-time">~2029 – 2033</div>
+                    <div class="tl-desc"><span class="zh">多申办方项目组合，全球团队与交付质量管理</span><span class="en">Multi-sponsor portfolio, global teams &amp; delivery quality</span></div>
+                </div>
+            </div>
+            <div class="tl-node">
+                <div class="tl-dot"></div>
+                <div class="neu tl-card">
+                    <div class="tl-stage"><span class="zh">全球交付负责人</span><span class="en">Head of Global Delivery</span></div>
+                    <div class="tl-time">~2033 – 2036</div>
+                    <div class="tl-desc"><span class="zh">跨区域交付体系、客户组合与产能调度</span><span class="en">Cross-region delivery system, client portfolio &amp; capacity</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CDMO 路线 -->
+    <div class="branch-row b3">
+        <div class="branch-label"><span class="zh">CDMO 路线</span><span class="en">CDMO</span></div>
+        <div class="tl-track">
+            <div class="tl-node">
+                <div class="tl-dot"></div>
+                <div class="neu tl-card">
+                    <div class="tl-stage"><span class="zh">生产项目管理总监</span><span class="en">Director, Manufacturing PM</span></div>
+                    <div class="tl-time">~2029 – 2033</div>
+                    <div class="tl-desc"><span class="zh">工艺转移与放大，GMP 生产项目全流程管理</span><span class="en">Process transfer &amp; scale-up; GMP manufacturing projects</span></div>
+                </div>
+            </div>
+            <div class="tl-node">
+                <div class="tl-dot"></div>
+                <div class="neu tl-card">
+                    <div class="tl-stage"><span class="zh">基地运营负责人</span><span class="en">Head of Site Operations</span></div>
+                    <div class="tl-time">~2033 – 2036</div>
+                    <div class="tl-desc"><span class="zh">产能、质量体系与供应链的整体运营</span><span class="en">Overall operations of capacity, quality system &amp; supply chain</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="converge">
+        <div class="cv-line"></div>
+        <div class="cv-chip"><span class="zh">↓ 三条路线于 ~2036 汇聚</span><span class="en">↓ Routes converge ~2036</span></div>
+        <div class="cv-line"></div>
+    </div>
+</section>
+
+<!-- ================= 汇聚至终点 ================= -->
+<section id="converge-line" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">汇聚之后 · 通向全流程掌舵人</span><span class="en">AFTER CONVERGENCE</span></h2>
+    </div>
+    <p class="section-note">
+        <span class="zh">无论走哪条路线，2036 年前后都带着"研发 + 临床 + 生产"的复合经验汇入主线上行段——跨组织形态的阅历正是统筹全流程的底气。</span>
+        <span class="en">Whichever route is taken, by ~2036 the combined discovery-clinical-manufacturing experience merges back onto the main track — cross-organization seasoning is exactly what helming the full pipeline demands.</span>
+    </p>
+
+    <div class="tl-track">
+        <div class="tl-node">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-todo"><span class="zh">规划</span><span class="en">PLAN</span></span></div>
+                <div class="tl-stage"><span class="zh">研发运营副总裁</span><span class="en">VP, R&amp;D Operations</span></div>
+                <div class="tl-time">~2036 – 2040</div>
+                <div class="tl-desc"><span class="zh">整合 GLP / GCP / GMP 三体系，负责管线组合运营</span><span class="en">Integrate GLP / GCP / GMP systems; portfolio operations</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-todo"><span class="zh">规划</span><span class="en">PLAN</span></span></div>
+                <div class="tl-stage"><span class="zh">首席科学官</span><span class="en">Chief Scientific Officer</span></div>
+                <div class="tl-time">~2040 – 2044</div>
+                <div class="tl-desc"><span class="zh">主导 NDA / BLA 申报策略与 FDA 沟通，对管线科学性负责</span><span class="en">Own NDA / BLA strategy and FDA interactions; pipeline science</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-todo"><span class="zh">规划</span><span class="en">PLAN</span></span></div>
+                <div class="tl-stage"><span class="zh">首席执行官 / 创始人</span><span class="en">CEO / Founder</span></div>
+                <div class="tl-time">~2044 – 2048</div>
+                <div class="tl-desc"><span class="zh">执掌或创立医药研发公司，对公司战略与资本负责</span><span class="en">Lead or found a drug R&amp;D company; strategy &amp; capital</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-dot"></div>
+            <div class="neu tl-card">
+                <div class="tl-badge-row"><span class="badge-goal"><span class="zh">终点</span><span class="en">GOAL</span></span></div>
+                <div class="tl-stage"><span class="zh">医药研发全流程掌舵人</span><span class="en">Head of Entire R&amp;D</span></div>
+                <div class="tl-time">2048+</div>
+                <div class="tl-desc"><span class="zh">统筹从发现到上市后的全生命周期最终决策——医药研发最重要的角色</span><span class="en">Final decision-maker across discovery to post-market — the most pivotal role in drug R&amp;D</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国·无锡</span><span class="en">Wuxi, China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? '职业路线 · 张天生 Tiansheng Zhang'
+            : 'Career Route · Tiansheng Zhang';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) {
+                var i = sections.indexOf(en.target);
+                links.forEach(function (a, j) { a.classList.toggle('active', i === j); });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) navIO.observe(s); });
+})();
+</script>
+</body>
+</html>

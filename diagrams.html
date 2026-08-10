@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图示 · 张天生 Tiansheng Zhang</title>
+<meta name="description" content="端粒结构与端粒酶、蛋白质设计-编辑循环的双语图示。Diagrams of telomere structure/telomerase and the protein design-engineering cycle — Tiansheng Zhang.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --radius: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+section { padding: 60px 0 8px; scroll-margin-top: 110px; }
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px; background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 19px; color: var(--text-muted); letter-spacing: 1px; }
+
+/* ---------- 顶部导航（页面切换） ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg); border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 13px; border-radius: 999px; white-space: nowrap; transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 方向下拉：悬停显示 工具/图示 */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 168px; position: sticky; top: 96px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px; background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55); transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- 页头 ---------- */
+.page-hero { padding: 64px 0 6px; text-align: center; }
+.page-hero h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 10px; }
+.page-hero .sub { color: var(--text-muted); font-size: 15.5px; max-width: 720px; margin: 0 auto; }
+
+/* ---------- 图示卡 ---------- */
+.fig-card { padding: 30px 34px; margin-bottom: 26px; }
+.fig-title { font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--accent-deep); }
+.fig-wrap {
+    border-radius: 16px; padding: 14px;
+    box-shadow: inset 4px 4px 9px var(--shadow-dark), inset -4px -4px 9px var(--shadow-light);
+}
+.fig-wrap svg { width: 100%; height: auto; display: block; }
+.fig-cap { font-size: 13.5px; color: var(--text-muted); margin-top: 16px; }
+.fig-cap strong { color: var(--accent-deep); font-weight: 600; }
+.fig-note { font-size: 14px; margin-bottom: 18px; }
+
+/* SVG 内文字 */
+.dna { stroke: #4f7df9; stroke-width: 3; fill: none; }
+.dna2 { stroke: #3b64e0; stroke-width: 3; fill: none; }
+.rna { stroke: #e0704f; stroke-width: 2.5; fill: none; }
+.rna-dash { stroke: #e0704f; stroke-width: 2.5; fill: none; stroke-dasharray: 5 4; }
+.prot { fill: #4f7df9; }
+.prot2 { fill: #3b64e0; }
+.prot3 { fill: #8fa1c4; }
+.warm { fill: #e0704f; }
+.green { fill: #3ba55d; }
+.lab { font-size: 13px; fill: #3b4256; font-family: inherit; font-weight: 600; }
+.lab-sm { font-size: 11px; fill: #6f7a92; font-family: inherit; }
+.lab-w { font-size: 11px; fill: #ffffff; font-family: inherit; font-weight: 600; }
+.seq { font-size: 11px; fill: #3b64e0; font-family: "Consolas", monospace; }
+.seq-r { font-size: 11px; fill: #e0704f; font-family: "Consolas", monospace; }
+.leader { stroke: #6f7a92; stroke-width: 1.2; fill: none; }
+.arrow { stroke: #6f7a92; stroke-width: 2; fill: none; }
+
+/* ---------- 页脚 ---------- */
+footer { margin-top: 70px; padding: 34px 0 40px; text-align: center; color: var(--text-muted); font-size: 13.5px; }
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+@media (max-width: 860px) {
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .page-hero h1 { font-size: 30px; }
+    .fig-card { padding: 22px 20px; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 顶部导航：页面切换 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link current" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link current" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= 页头 ================= -->
+<header class="page-hero container">
+    <h1><span class="zh">端粒与蛋白质编辑图示</span><span class="en">Telomere &amp; Protein-Editing Diagrams</span></h1>
+    <p class="sub">
+        <span class="zh">把"方向"页的科学画成两张图：染色体末端如何自我保护（端粒），以及蛋白质如何被一轮轮重新设计（编辑循环）</span>
+        <span class="en">The science of the Interests page in two pictures: how a chromosome end protects itself (the telomere), and how proteins are redesigned round after round (the engineering cycle)</span>
+    </p>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#telomere-fig" class="active"><span class="zh">端粒结构</span><span class="en">Telomere Structure</span></a>
+            <a href="#telomerase-fig"><span class="zh">端粒酶与 R-loop</span><span class="en">Telomerase &amp; R-loop</span></a>
+            <a href="#protein-cycle"><span class="zh">蛋白质编辑循环</span><span class="en">Protein-Editing Cycle</span></a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= 图一：端粒结构 ================= -->
+<section id="telomere-fig" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">端粒结构：T-loop 与 Shelterin</span><span class="en">TELOMERE STRUCTURE: T-LOOP &amp; SHELTERIN</span></h2>
+    </div>
+    <div class="neu fig-card">
+        <p class="fig-note">
+            <span class="zh">染色体末端由数千个 TTAGGG 重复序列构成，末端回折形成 T-loop"套索"，3′ 单链尾侵入双链形成 D-loop，把脆弱的 DNA 末端藏起来，避免被误认为断裂。六种 shelterin 蛋白（TRF1、TRF2、RAP1、TIN2、TPP1、POT1）共同组装并维持这一结构——正是 Griffith 实验室电镜下直接观察到的图景。</span>
+            <span class="en">A chromosome end carries thousands of TTAGGG repeats. The end folds back into a T-loop "lariat," and the 3′ single-stranded tail invades the duplex to form a D-loop, hiding the vulnerable DNA end from being mistaken for a break. Six shelterin proteins (TRF1, TRF2, RAP1, TIN2, TPP1, POT1) assemble and maintain this architecture — the very picture the Griffith lab observes directly under the electron microscope.</span>
+        </p>
+        <div class="fig-wrap">
+            <svg viewBox="0 0 940 400" role="img" aria-label="Telomere T-loop and shelterin complex">
+                <!-- 标题 -->
+                <text x="30" y="30" class="lab"><tspan class="zh">端粒末端高级结构</tspan><tspan class="en">Higher-order structure of the telomere end</tspan></text>
+
+                <!-- 双链主干 + T-loop 套索（上下两条链） -->
+                <path class="dna"  d="M40 190 H620 C 662 108, 762 66, 826 122 C 882 170, 852 246, 760 252 C 706 255, 664 234, 648 216"/>
+                <path class="dna2" d="M40 206 H612 C 650 124, 750 84, 812 134 C 862 176, 836 232, 758 236 C 710 238, 676 222, 660 212"/>
+
+                <!-- 重复序列标注 -->
+                <text x="60" y="180" class="seq">5′-(TTAGGG)ₙ-3′</text>
+                <text x="60" y="228" class="seq">3′-(AATCCC)ₙ-5′</text>
+
+                <!-- D-loop：入侵的 3′ 尾（红虚线）+ 被置换的泡 -->
+                <path class="rna-dash" d="M648 216 C 622 232, 592 234, 568 212"/>
+                <path class="dna" d="M566 196 C 588 178, 620 180, 642 196" opacity="0.55"/>
+                <text x="520" y="262" class="lab">D-loop</text>
+                <path class="leader" d="M585 240 L560 256"/>
+                <text x="680" y="278" class="lab-sm"><tspan class="zh">3′ G-尾入侵（G-overhang）</tspan><tspan class="en">3′ G-tail invasion (G-overhang)</tspan></text>
+                <path class="leader" d="M640 232 L678 268"/>
+
+                <!-- T-loop 标注 -->
+                <text x="726" y="52" class="lab">T-loop</text>
+                <path class="leader" d="M740 60 L762 96"/>
+
+                <!-- Shelterin：TRF1 二聚体 -->
+                <rect x="170" y="160" width="34" height="26" rx="9" class="prot"/>
+                <rect x="208" y="160" width="34" height="26" rx="9" class="prot"/>
+                <line x1="204" y1="173" x2="208" y2="173" stroke="#3b64e0" stroke-width="4"/>
+                <text x="176" y="148" class="lab">TRF1</text>
+
+                <!-- TIN2 桥 -->
+                <ellipse cx="400" cy="172" rx="26" ry="17" class="prot3"/>
+                <text x="382" y="176" class="lab-w">TIN2</text>
+                <path class="leader" stroke-dasharray="4 3" d="M242 173 H374 M426 173 H590"/>
+
+                <!-- TRF2 二聚体（环基座） -->
+                <rect x="586" y="158" width="34" height="26" rx="9" class="prot2"/>
+                <rect x="624" y="158" width="34" height="26" rx="9" class="prot2"/>
+                <text x="592" y="146" class="lab">TRF2</text>
+
+                <!-- RAP1 -->
+                <circle cx="672" cy="172" r="14" class="prot3"/>
+                <text x="660" y="176" class="lab-w" font-size="9.5">RAP1</text>
+
+                <!-- POT1 + TPP1（结合在入侵尾上） -->
+                <circle cx="598" cy="248" r="16" class="prot"/>
+                <text x="584" y="252" class="lab-w" font-size="10">POT1</text>
+                <ellipse cx="560" cy="264" rx="20" ry="13" class="prot3"/>
+                <text x="546" y="268" class="lab-w" font-size="10">TPP1</text>
+                <path class="leader" stroke-dasharray="4 3" d="M560 254 C 500 230, 440 200, 420 188"/>
+
+                <!-- 端粒酶位置提示 -->
+                <text x="770" y="330" class="lab-sm"><tspan class="zh">端粒酶在 3′ 末端延伸（见下图）</tspan><tspan class="en">Telomerase extends the 3′ end (next figure)</tspan></text>
+                <path class="arrow" d="M836 300 C 830 280, 800 262, 762 252 m6 -2 -8 -2 3 8"/>
+
+                <!-- Shelterin 图例 -->
+                <rect x="30" y="330" width="360" height="52" rx="12" fill="none" stroke="#c1cbda" stroke-width="1.5"/>
+                <circle cx="52" cy="356" r="8" class="prot"/><text x="66" y="360" class="lab-sm">TRF1 / POT1</text>
+                <circle cx="160" cy="356" r="8" class="prot2"/><text x="174" y="360" class="lab-sm">TRF2</text>
+                <circle cx="222" cy="356" r="8" class="prot3"/><text x="236" y="360" class="lab-sm">TIN2 / TPP1 / RAP1</text>
+                <text x="30" y="318" class="lab"><tspan class="zh">Shelterin 复合体（6 种蛋白）</tspan><tspan class="en">The shelterin complex (6 proteins)</tspan></text>
+            </svg>
+        </div>
+        <p class="fig-cap">
+            <strong><span class="zh">解读：</span><span class="en">How to read it:</span></strong>
+            <span class="zh">TRF1/TRF2 二聚体锚定在双链重复区并招募 TIN2–TPP1–POT1 桥联到单链尾；RAP1 依附 TRF2。T-loop/D-loop 结构一旦被破坏，DNA 损伤修复通路（如 Ramsden 研究的 Pol θ/TMEJ）就会错误地"修复"染色体末端，造成基因组不稳定——这把"方向"页的两条主线连在了一起。</span>
+            <span class="en">TRF1/TRF2 dimers anchor the duplex repeats and recruit the TIN2–TPP1–POT1 bridge to the single-stranded tail; RAP1 rides on TRF2. Once the T-loop/D-loop is disrupted, DNA-damage pathways (such as the Pol θ/TMEJ studied by Ramsden) mistakenly "repair" the chromosome end, causing genome instability — connecting the two threads of the Interests page.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ================= 图二：端粒酶与 R-loop ================= -->
+<section id="telomerase-fig" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">端粒酶延伸与 TERRA R-loop</span><span class="en">TELOMERASE EXTENSION &amp; TERRA R-LOOP</span></h2>
+    </div>
+    <div class="neu fig-card">
+        <p class="fig-note">
+            <span class="zh">端粒酶（TERT 催化亚基 + TERC RNA 模板）以自身 RNA 为模板，把 TTAGGG 重复逐个加到 3′ G-尾上——这是"持续合成能力（processivity）"的分子基础，也是抗衰老/永生研究的核心开关。同时，端粒转录出的 TERRA 长链非编码 RNA 会入侵双链形成 R-loop，既是端粒稳态的调控旋钮，失控时也成为基因组不稳定的来源（Griffith 方向）。</span>
+            <span class="en">Telomerase (the TERT catalytic subunit plus the TERC RNA template) uses its own RNA to add TTAGGG repeats one by one onto the 3′ G-tail — the molecular basis of "processivity" and the core switch of anti-aging/immortality research. Meanwhile, telomere-transcribed TERRA lncRNA invades the duplex to form R-loops: a regulatory dial of telomere homeostasis and, when uncontrolled, a source of genome instability (the Griffith direction).</span>
+        </p>
+        <div class="fig-wrap">
+            <svg viewBox="0 0 940 420" role="img" aria-label="Telomerase extension and TERRA R-loop">
+                <!-- ===== 上半：端粒酶延伸 ===== -->
+                <text x="30" y="30" class="lab"><tspan class="zh">A. 端粒酶在 3′ G-尾上添加 TTAGGG 重复</tspan><tspan class="en">A. Telomerase adds TTAGGG repeats onto the 3′ G-tail</tspan></text>
+
+                <!-- 双链 + 3′ 突出 -->
+                <line x1="40" y1="120" x2="430" y2="120" class="dna"/>
+                <line x1="40" y1="136" x2="430" y2="136" class="dna2"/>
+                <line x1="430" y1="120" x2="600" y2="120" class="dna"/>
+                <text x="46" y="110" class="seq">5′-…TTAGGG TTAGGG-3′</text>
+                <text x="46" y="156" class="seq">3′-…AATCCC AATCCC-5′</text>
+                <text x="446" y="108" class="lab-sm"><tspan class="zh">3′ G-尾</tspan><tspan class="en">3′ G-tail</tspan></text>
+
+                <!-- TERT 蛋白 -->
+                <ellipse cx="660" cy="150" rx="98" ry="66" class="prot2" opacity="0.92"/>
+                <text x="636" y="128" class="lab-w" font-size="14">TERT</text>
+                <text x="610" y="146" class="lab-w" font-size="9.5"><tspan class="zh">催化亚基</tspan><tspan class="en">catalytic subunit</tspan></text>
+
+                <!-- TERC 模板 RNA（红波浪） -->
+                <path class="rna" d="M588 152 q10 -10 20 0 q10 10 20 0 q10 -10 20 0 q10 10 20 0 q10 -10 20 0 q10 10 20 0"/>
+                <text x="596" y="176" class="seq-r">3′-CAAUCCCAAUC-5′ (TERC)</text>
+
+                <!-- 新合成重复（虚线） -->
+                <line x1="600" y1="120" x2="640" y2="120" class="rna-dash"/>
+                <text x="560" y="96" class="lab-sm"><tspan class="zh">新增重复</tspan><tspan class="en">new repeat</tspan></text>
+
+                <!-- 延伸箭头（回到左侧变长） -->
+                <path class="arrow" d="M690 230 C 640 268, 520 268, 470 240 m10 2 -12 -3 3 11"/>
+                <text x="480" y="292" class="lab-sm"><tspan class="zh">持续合成 → 端粒延长</tspan><tspan class="en">Processive synthesis → telomere elongation</tspan></text>
+
+                <!-- 分隔线 -->
+                <line x1="30" y1="318" x2="910" y2="318" stroke="#c1cbda" stroke-width="1.5"/>
+
+                <!-- ===== 下半：TERRA R-loop ===== -->
+                <text x="30" y="346" class="lab"><tspan class="zh">B. TERRA 入侵双链形成 R-loop</tspan><tspan class="en">B. TERRA invades the duplex to form an R-loop</tspan></text>
+
+                <!-- 双链区 -->
+                <line x1="300" y1="392" x2="660" y2="392" class="dna2"/>
+                <!-- C 链连续，G 链被置换 -->
+                <line x1="300" y1="378" x2="380" y2="378" class="dna"/>
+                <line x1="540" y1="378" x2="660" y2="378" class="dna"/>
+                <!-- 被置换的 G 链拱起 -->
+                <path class="dna" d="M380 378 C 420 336, 500 336, 540 378" opacity="0.6"/>
+                <text x="430" y="340" class="lab-sm"><tspan class="zh">被置换的 G 链</tspan><tspan class="en">Displaced G-strand</tspan></text>
+                <!-- TERRA RNA 与 C 链配对 -->
+                <path class="rna" d="M380 378 q10 -8 20 0 q10 8 20 0 q10 -8 20 0 q10 8 20 0 q10 -8 20 0 q10 8 20 0 q10 -8 20 0 q10 8 20 0"/>
+                <path class="rna" d="M540 378 C 590 366, 640 366, 690 352" />
+                <text x="640" y="342" class="seq-r">TERRA 5′-(UUAGGG)ₙ</text>
+                <text x="700" y="392" class="lab">R-loop</text>
+                <path class="leader" d="M690 384 L700 388"/>
+
+                <!-- 调控/风险标注 -->
+                <text x="30" y="392" class="lab-sm"><tspan class="zh">适量 = 端粒稳态调控；失控 = 基因组不稳定</tspan><tspan class="en">Balanced = homeostasis; uncontrolled = genome instability</tspan></text>
+            </svg>
+        </div>
+        <p class="fig-cap">
+            <strong><span class="zh">解读：</span><span class="en">How to read it:</span></strong>
+            <span class="zh">TERC 模板与 3′ G-尾配对，TERT 每轮转一次模板就加一个 TTAGGG——"轮转次数"就是 processivity，是我想通过 R-loop 相关酶的调控去提升的能力；Henikoff 的 CUT&amp;RUN/CUT&amp;Tag 则可用来定位调控端粒延伸的转录因子结合位点。</span>
+            <span class="en">The TERC template pairs with the 3′ G-tail, and each template translocation by TERT adds one TTAGGG — the "number of rounds" is processivity, the capacity I hope to enhance by regulating R-loop-related enzymes; Henikoff's CUT&amp;RUN/CUT&amp;Tag can map where telomere-elongation transcription factors bind.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ================= 图三：蛋白质编辑循环 ================= -->
+<section id="protein-cycle" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">蛋白质设计与编辑循环</span><span class="en">THE PROTEIN DESIGN &amp; EDITING CYCLE</span></h2>
+    </div>
+    <div class="neu fig-card">
+        <p class="fig-note">
+            <span class="zh">现代蛋白质工程是一个"设计–构建–测试–学习"的飞轮：计算设计（Kuhlman 式从头设计）给出候选序列 → 基因合成构建饱和突变文库 → 表达纯化 → 高通量筛选（Fowler 式 DMS 给每个突变打分）→ 测序数据反哺机器学习模型，进入下一轮。每一轮都让蛋白更接近目标功能——抑制致癌 G 蛋白、做抗原门控的 PAGER 细胞（Kalogriopoulos），或我真正关心的：改造长寿相关蛋白。</span>
+            <span class="en">Modern protein engineering is a design–build–test–learn flywheel: computational design (Kuhlman-style de novo) proposes candidates → gene synthesis builds saturated libraries → expression → high-throughput screening (Fowler-style DMS scoring every mutation) → sequencing data trains ML models for the next round. Each cycle moves the protein closer to its target function — inhibiting oncogenic G proteins, building antigen-gated PAGER cells (Kalogriopoulos), or what I truly care about: engineering longevity-related proteins.</span>
+        </p>
+        <div class="fig-wrap">
+            <svg viewBox="0 0 940 440" role="img" aria-label="Protein design-build-test-learn cycle">
+                <!-- 中心 -->
+                <circle cx="470" cy="220" r="62" fill="none" stroke="#4f7df9" stroke-width="2.5" stroke-dasharray="6 5"/>
+                <text x="470" y="212" text-anchor="middle" class="lab"><tspan class="zh">每轮迭代</tspan><tspan class="en">Each round</tspan></text>
+                <text x="470" y="234" text-anchor="middle" class="lab-sm"><tspan class="zh">更接近目标功能</tspan><tspan class="en">closer to function</tspan></text>
+
+                <!-- 节点 1：计算设计（顶） -->
+                <circle cx="470" cy="66" r="52" class="prot2"/>
+                <text x="470" y="58" text-anchor="middle" class="lab-w" font-size="12.5"><tspan class="zh">计算设计</tspan><tspan class="en">DESIGN</tspan></text>
+                <text x="470" y="76" text-anchor="middle" class="lab-w" font-size="9">Rosetta / ML</text>
+
+                <!-- 节点 2：文库构建（右上） -->
+                <circle cx="668" cy="158" r="52" class="prot"/>
+                <text x="668" y="150" text-anchor="middle" class="lab-w" font-size="12.5"><tspan class="zh">文库构建</tspan><tspan class="en">BUILD</tspan></text>
+                <text x="668" y="168" text-anchor="middle" class="lab-w" font-size="9"><tspan class="zh">基因合成·饱和突变</tspan><tspan class="en">Gene synthesis</tspan></text>
+
+                <!-- 节点 3：表达筛选（右下） -->
+                <circle cx="612" cy="330" r="52" class="prot"/>
+                <text x="612" y="322" text-anchor="middle" class="lab-w" font-size="12.5"><tspan class="zh">表达·筛选</tspan><tspan class="en">TEST</tspan></text>
+                <text x="612" y="340" text-anchor="middle" class="lab-w" font-size="9">DMS / FACS</text>
+
+                <!-- 节点 4：测序学习（左下） -->
+                <circle cx="328" cy="330" r="52" class="prot"/>
+                <text x="328" y="322" text-anchor="middle" class="lab-w" font-size="12.5"><tspan class="zh">测序·学习</tspan><tspan class="en">LEARN</tspan></text>
+                <text x="328" y="340" text-anchor="middle" class="lab-w" font-size="9">NGS + ML</text>
+
+                <!-- 节点 5：结构验证（左上） -->
+                <circle cx="272" cy="158" r="52" class="prot"/>
+                <text x="272" y="150" text-anchor="middle" class="lab-w" font-size="12.5"><tspan class="zh">结构验证</tspan><tspan class="en">VERIFY</tspan></text>
+                <text x="272" y="168" text-anchor="middle" class="lab-w" font-size="9">X-ray / Cryo-EM</text>
+
+                <!-- 顺时针箭头 -->
+                <path class="arrow" d="M522 66 C 570 82, 610 104, 636 124 m-2 -10 4 12 -12 -2"/>
+                <path class="arrow" d="M690 210 C 682 252, 664 288, 646 308 m-9 -6 11 4 -4 -11"/>
+                <path class="arrow" d="M558 348 C 510 360, 430 360, 382 348 m2 10 -12 -6 11 -5"/>
+                <path class="arrow" d="M296 288 C 278 252, 264 232, 262 210 m-8 7 6 -13 7 12"/>
+                <path class="arrow" d="M310 118 C 348 90, 392 74, 418 70 m-3 11 -12 -9 13 -3"/>
+
+                <!-- 四角应用标签 -->
+                <g>
+                    <rect x="30" y="24" width="200" height="58" rx="14" fill="none" stroke="#c1cbda" stroke-width="1.5"/>
+                    <text x="46" y="48" class="lab" font-size="12"><tspan class="zh">治疗性结合蛋白</tspan><tspan class="en">Therapeutic binders</tspan></text>
+                    <text x="46" y="68" class="lab-sm"><tspan class="zh">抑制致癌 G 蛋白 · Kuhlman</tspan><tspan class="en">Oncogenic G proteins · Kuhlman</tspan></text>
+                </g>
+                <g>
+                    <rect x="710" y="24" width="200" height="58" rx="14" fill="none" stroke="#c1cbda" stroke-width="1.5"/>
+                    <text x="726" y="48" class="lab" font-size="12">PAGER <tspan class="zh">可编程细胞</tspan><tspan class="en">cells</tspan></text>
+                    <text x="726" y="68" class="lab-sm"><tspan class="zh">抗原门控信号 · Kalogriopoulos</tspan><tspan class="en">Antigen-gated · Kalogriopoulos</tspan></text>
+                </g>
+                <g>
+                    <rect x="710" y="358" width="200" height="58" rx="14" fill="none" stroke="#c1cbda" stroke-width="1.5"/>
+                    <text x="726" y="382" class="lab" font-size="12"><tspan class="zh">变异效应图谱</tspan><tspan class="en">Variant effect maps</tspan></text>
+                    <text x="726" y="402" class="lab-sm"><tspan class="zh">亲和力/稳定性优化 · Fowler</tspan><tspan class="en">Affinity optimization · Fowler</tspan></text>
+                </g>
+                <g>
+                    <rect x="30" y="358" width="200" height="58" rx="14" fill="none" stroke="#e0704f" stroke-width="1.5"/>
+                    <text x="46" y="382" class="lab" font-size="12" fill="#e0704f"><tspan class="zh">长寿相关蛋白改造</tspan><tspan class="en">Longevity proteins</tspan></text>
+                    <text x="46" y="402" class="lab-sm"><tspan class="zh">我的长期目标 · 端粒酶辅助因子</tspan><tspan class="en">My long-term goal · telomerase cofactors</tspan></text>
+                </g>
+            </svg>
+        </div>
+        <p class="fig-cap">
+            <strong><span class="zh">解读：</span><span class="en">How to read it:</span></strong>
+            <span class="zh">循环没有起点也没有终点——DMS 数据训练的模型让下一轮设计更聪明，结构验证把失败原因变成下一轮约束。左下角橙色框是这个飞轮对我个人的意义：用同样的范式改造端粒酶辅助因子与长寿相关蛋白，与基因治疗一起构成"永生"研究的工程底座。</span>
+            <span class="en">The cycle has no true start or end — DMS-trained models make the next design smarter, and structural verification turns failures into next-round constraints. The orange box is what this flywheel means to me: applying the same paradigm to telomerase cofactors and longevity-related proteins, forming — together with gene therapy — the engineering base of immortality research.</span>
+        </p>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国</span><span class="en">China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? '图示 · 张天生 Tiansheng Zhang'
+            : 'Diagrams · Tiansheng Zhang';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) {
+                var i = sections.indexOf(en.target);
+                links.forEach(function (a, j) { a.classList.toggle('active', i === j); });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) navIO.observe(s); });
+})();
+</script>
+</body>
+</html>

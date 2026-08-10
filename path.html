@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>职业路径 · FDA 药物研发全流程 · 张天生 Tiansheng Zhang</title>
+<meta name="description" content="FDA 药物研发全流程：各阶段周期、监管审核关键文件，以及药企、CRO、CDMO、中心实验室等机构的协作关系。The FDA drug development process with key review documents and stakeholder map.">
+<style>
+:root {
+    --bg: #e6ebf4;
+    --shadow-dark: #c1cbda;
+    --shadow-light: #ffffff;
+    --text: #3b4256;
+    --text-muted: #6f7a92;
+    --accent: #4f7df9;
+    --accent-deep: #3b64e0;
+    --radius: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+body[data-lang="zh"] .en { display: none !important; }
+body[data-lang="en"] .zh { display: none !important; }
+
+.neu {
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+section { padding: 60px 0 8px; scroll-margin-top: 110px; }
+.section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.section-bar {
+    width: 6px; height: 34px; border-radius: 3px; background: var(--accent);
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+.section-head h2 { font-size: 26px; letter-spacing: .5px; }
+.section-head h2 .en { font-size: 19px; color: var(--text-muted); letter-spacing: 1px; }
+.section-note { font-size: 14px; color: var(--text-muted); margin-bottom: 26px; max-width: 860px; }
+.section-note strong { color: var(--accent-deep); }
+
+/* ---------- 顶部导航（页面切换） ---------- */
+nav {
+    position: sticky; top: 14px; z-index: 100;
+    max-width: 1060px; margin: 14px auto 0; padding: 10px 22px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg); border-radius: 999px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+nav .brand { font-weight: 700; font-size: 15px; margin-right: auto; white-space: nowrap; text-decoration: none; color: var(--text); }
+nav .brand span { color: var(--accent); }
+nav a.nav-link {
+    color: var(--text-muted); text-decoration: none; font-size: 14px;
+    padding: 7px 13px; border-radius: 999px; white-space: nowrap; transition: all .2s ease;
+}
+nav a.nav-link:hover { color: var(--accent); }
+nav a.nav-link.current {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+/* 悬停下拉（方向 / 职业路径） */
+.nav-dropdown { position: relative; }
+.nav-dropdown .caret { font-size: 10px; margin-left: 3px; opacity: .65; }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    display: flex; flex-direction: column; gap: 4px; padding: 8px; min-width: 112px;
+    background: var(--bg); border-radius: 16px;
+    box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    opacity: 0; visibility: hidden; transition: all .18s ease; z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dropdown-menu a.nav-link { text-align: center; }
+.lang-switch {
+    display: flex; margin-left: 8px; border-radius: 999px; padding: 3px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+.lang-switch button {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 999px; font-family: inherit;
+}
+.lang-switch button.on {
+    color: #fff; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 左侧竖排章节栏 ---------- */
+.layout { display: flex; gap: 26px; align-items: flex-start; }
+.side-col { flex: 0 0 168px; position: sticky; top: 96px; }
+.main-col { flex: 1 1 auto; min-width: 0; }
+.side-nav { display: flex; flex-direction: column; gap: 10px; }
+.side-nav a {
+    display: block; text-decoration: none; color: var(--text-muted);
+    font-size: 13.5px; padding: 11px 16px; border-radius: 14px; background: var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.55); transition: all .2s ease;
+}
+.side-nav a:hover { color: var(--accent); transform: translateX(3px); }
+.side-nav a.active {
+    color: var(--accent); font-weight: 600;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+}
+
+/* ---------- 页头 ---------- */
+.page-hero { padding: 64px 0 6px; text-align: center; }
+.page-hero h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 10px; }
+.page-hero .sub { color: var(--text-muted); font-size: 15.5px; max-width: 760px; margin: 0 auto; }
+
+/* ---------- 时间线（文档行在线上方，节点纵向排列保证对齐） ---------- */
+.tl-track { display: flex; align-items: stretch; }
+.tl-node { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+.tl-docs {
+    margin: 0 7px 16px; padding: 10px 12px 9px; border-radius: 12px; min-height: 136px;
+    font-size: 11.5px; line-height: 1.6; color: var(--text-muted);
+    box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+    overflow-wrap: break-word;
+}
+.doc-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--accent-deep); margin-bottom: 4px; }
+.tl-mid { position: relative; height: 22px; margin-bottom: 12px; }
+.tl-mid::before, .tl-mid::after {
+    content: ''; position: absolute; top: 9px; height: 4px; border-radius: 2px;
+    background: var(--accent);
+}
+.tl-mid::before { left: 0; width: calc(50% - 11px); }
+.tl-mid::after { right: 0; width: calc(50% - 11px); }
+.tl-node:first-child .tl-mid::before, .tl-node:last-child .tl-mid::after { display: none; }
+.tl-dot {
+    position: absolute; top: 2px; left: 50%; transform: translateX(-50%);
+    width: 18px; height: 18px; border-radius: 50%; background: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+}
+.tl-card {
+    margin: 0 7px; padding: 14px 15px 13px; border-radius: 16px; flex: 1;
+    overflow-wrap: break-word;
+}
+.tl-stage { font-weight: 700; font-size: 14px; line-height: 1.45; }
+.tl-stage .en { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+.tl-time {
+    display: inline-block; font-size: 11.5px; color: var(--accent-deep);
+    padding: 2px 10px; border-radius: 999px; margin: 6px 0; max-width: 100%;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+.tl-desc { font-size: 12.5px; color: var(--text-muted); }
+
+/* ---------- 关系图卡片 ---------- */
+.fig-card { padding: 26px 22px 18px; }
+.fig-wrap {
+    border-radius: 16px; padding: 10px;
+    box-shadow: inset 4px 4px 9px var(--shadow-dark), inset -4px -4px 9px var(--shadow-light);
+}
+.fig-wrap svg { display: block; width: 100%; height: auto; }
+.fig-cap { font-size: 12.5px; color: var(--text-muted); text-align: center; margin-top: 14px; max-width: 780px; margin-left: auto; margin-right: auto; }
+
+/* ---------- 页脚 ---------- */
+footer { margin-top: 70px; padding: 34px 0 40px; text-align: center; color: var(--text-muted); font-size: 13.5px; }
+footer .foot-line {
+    width: 120px; height: 6px; border-radius: 3px; margin: 0 auto 22px;
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+/* ---------- 滚动显现 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition: none !important; }
+}
+
+@media (max-width: 860px) {
+    nav { border-radius: 24px; justify-content: center; }
+    .nav-dropdown, .dropdown-menu { display: contents; }
+    .nav-dropdown .caret { display: none; }
+    nav .brand { width: 100%; text-align: center; margin: 0 0 6px; }
+    .layout { flex-direction: column; }
+    .side-col { position: static; flex: none; width: 100%; padding-top: 20px; }
+    .side-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .side-nav a:hover { transform: none; }
+    .page-hero h1 { font-size: 30px; }
+    .tl-track { overflow-x: auto; padding-bottom: 10px; }
+    .tl-node { min-width: 200px; }
+    .fig-card { padding: 18px 14px 14px; }
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<!-- ================= 顶部导航：页面切换 ================= -->
+<nav class="container">
+    <a class="brand" href="index.html">张天生 <span>·</span> Tiansheng Zhang</a>
+    <a class="nav-link" href="index.html"><span class="zh">主页</span><span class="en">Home</span></a>
+    <a class="nav-link" href="journey.html"><span class="zh">历程</span><span class="en">Journey</span></a>
+    <div class="nav-dropdown">
+        <a class="nav-link" href="interests.html"><span class="zh">方向</span><span class="en">Interests</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="tools.html"><span class="zh">工具</span><span class="en">Tools</span></a>
+            <a class="nav-link" href="diagrams.html"><span class="zh">图示</span><span class="en">Diagrams</span></a>
+        </div>
+    </div>
+    <div class="nav-dropdown">
+        <a class="nav-link current" href="path.html"><span class="zh">职业路径</span><span class="en">Career Path</span><span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+            <a class="nav-link" href="career.html"><span class="zh">职业路线</span><span class="en">Career Route</span></a>
+            <a class="nav-link" href="ai.html"><span class="zh">AI 平台</span><span class="en">AI Platform</span></a>
+            <a class="nav-link" href="tbd.html"><span class="zh">TBD</span><span class="en">TBD</span></a>
+        </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button id="btn-zh" class="on" type="button">中</button>
+        <button id="btn-en" type="button">EN</button>
+    </div>
+</nav>
+
+<!-- ================= 页头 ================= -->
+<header class="page-hero container">
+    <h1><span class="zh">FDA 药物研发全流程</span><span class="en">The FDA Drug Development Process</span></h1>
+    <p class="sub">
+        <span class="zh">药物从发现到上市后的完整旅程：各阶段周期、监管审核关键文件，以及药企、CRO、CDMO、中心实验室等机构的协作关系</span>
+        <span class="en">The full journey of a drug from discovery to post-market: stage durations, key review documents, and how sponsors, CROs, CDMOs and central labs work together</span>
+    </p>
+</header>
+
+<div class="layout container">
+    <!-- ================= 左侧章节栏 ================= -->
+    <aside class="side-col">
+        <div class="side-nav">
+            <a href="#fda-line" class="active"><span class="zh">全流程时间线</span><span class="en">Timeline</span></a>
+            <a href="#org-map"><span class="zh">机构关系图</span><span class="en">Stakeholders</span></a>
+        </div>
+    </aside>
+
+    <div class="main-col">
+<!-- ================= FDA 药物研发全流程时间线 ================= -->
+<section id="fda-line" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">FDA 药物研发全流程</span><span class="en">THE FDA DRUG DEVELOPMENT PROCESS</span></h2>
+    </div>
+    <p class="section-note">
+        <span class="zh">参考 FDA <em>The Drug Development Process</em> 五步法（此处将 IND 单列为一站）。时间线<strong>上方</strong>列出各阶段监管审核的关键文件，<strong>下方</strong>关系图展示各类机构在药物研发中的角色分工。</span>
+        <span class="en">Based on FDA's <em>The Drug Development Process</em> (with IND broken out as its own stop). <strong>Above</strong> the timeline: the key review documents of each stage; <strong>below</strong>: how each type of organization fits into drug development.</span>
+    </p>
+
+    <div class="tl-track">
+        <div class="tl-node">
+            <div class="tl-docs">
+                <div class="doc-tag"><span class="zh">审核文件</span><span class="en">REVIEW DOCS</span></div>
+                <span class="zh">无监管申报 · 内部研究记录</span><span class="en">No filing · internal research records</span>
+            </div>
+            <div class="tl-mid"><span class="tl-dot"></span></div>
+            <div class="neu tl-card">
+                <div class="tl-stage"><span class="zh">发现与开发</span><span class="en">Discovery &amp; Development</span></div>
+                <div class="tl-time"><span class="zh">通常 3–6 年</span><span class="en">Typically 3–6 yrs</span></div>
+                <div class="tl-desc"><span class="zh">靶点发现、候选分子筛选与优化</span><span class="en">Target identification, candidate screening &amp; optimization</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-docs">
+                <div class="doc-tag"><span class="zh">审核文件</span><span class="en">REVIEW DOCS</span></div>
+                <span class="zh">GLP 毒理 / 药理报告（汇入 IND）</span><span class="en">GLP tox / pharmacology reports → IND</span>
+            </div>
+            <div class="tl-mid"><span class="tl-dot"></span></div>
+            <div class="neu tl-card">
+                <div class="tl-stage"><span class="zh">临床前研究</span><span class="en">Preclinical Research</span></div>
+                <div class="tl-time"><span class="zh">通常 1–3 年 · GLP</span><span class="en">Typically 1–3 yrs · GLP</span></div>
+                <div class="tl-desc"><span class="zh">体内外药效、毒理与安全性评价</span><span class="en">In vitro / in vivo efficacy, toxicology &amp; safety</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-docs">
+                <div class="doc-tag"><span class="zh">审核文件</span><span class="en">REVIEW DOCS</span></div>
+                <span class="zh">IND 申报包：FDA 1571 / 1572 · CMC · 药理毒理 · 临床方案</span><span class="en">IND package: Forms 1571 / 1572 · CMC · pharm/tox · protocol</span>
+            </div>
+            <div class="tl-mid"><span class="tl-dot"></span></div>
+            <div class="neu tl-card">
+                <div class="tl-stage"><span class="zh">IND 新药临床试验申请</span><span class="en">IND Application</span></div>
+                <div class="tl-time"><span class="zh">FDA 30 天审评</span><span class="en">FDA 30-day review</span></div>
+                <div class="tl-desc"><span class="zh">药学与临床前资料汇编，获准后方可启动人体试验</span><span class="en">CMC &amp; preclinical dossier; clearance required before human trials</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-docs">
+                <div class="doc-tag"><span class="zh">审核文件</span><span class="en">REVIEW DOCS</span></div>
+                <span class="zh">临床试验方案 Protocol · 研究者手册 IB · 知情同意 ICF · 年报 DSUR</span><span class="en">Protocol · IB · ICF · annual report / DSUR</span>
+            </div>
+            <div class="tl-mid"><span class="tl-dot"></span></div>
+            <div class="neu tl-card">
+                <div class="tl-stage"><span class="zh">临床研究 I–III 期</span><span class="en">Clinical Research Ph. I–III</span></div>
+                <div class="tl-time"><span class="zh">通常 6–8 年 · GCP</span><span class="en">Typically 6–8 yrs · GCP</span></div>
+                <div class="tl-desc"><span class="zh">I 期安全性 → II 期有效性 → III 期确证</span><span class="en">Phase I safety → Phase II efficacy → Phase III confirmation</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-docs">
+                <div class="doc-tag"><span class="zh">审核文件</span><span class="en">REVIEW DOCS</span></div>
+                <span class="zh">NDA / BLA 申报（CTD 模块 1–5）</span><span class="en">NDA / BLA filing (CTD Modules 1–5)</span>
+            </div>
+            <div class="tl-mid"><span class="tl-dot"></span></div>
+            <div class="neu tl-card">
+                <div class="tl-stage"><span class="zh">NDA / BLA 上市审评</span><span class="en">NDA / BLA Review</span></div>
+                <div class="tl-time"><span class="zh">标准 10 个月 / 优先 6 个月</span><span class="en">Standard 10 mo / priority 6 mo</span></div>
+                <div class="tl-desc"><span class="zh">FDA 审评全部证据，决定是否批准上市</span><span class="en">FDA reviews the full evidence package and decides on approval</span></div>
+            </div>
+        </div>
+        <div class="tl-node">
+            <div class="tl-docs">
+                <div class="doc-tag"><span class="zh">审核文件</span><span class="en">REVIEW DOCS</span></div>
+                <span class="zh">FAERS 个例报告 · PBRER / PSUR · REMS 评估</span><span class="en">FAERS reports · PBRER / PSUR · REMS</span>
+            </div>
+            <div class="tl-mid"><span class="tl-dot"></span></div>
+            <div class="neu tl-card">
+                <div class="tl-stage"><span class="zh">上市后监测</span><span class="en">Post-Market Monitoring</span></div>
+                <div class="tl-time"><span class="zh">持续 · IV 期</span><span class="en">Ongoing · Phase IV</span></div>
+                <div class="tl-desc"><span class="zh">药物警戒、真实世界研究与标签更新</span><span class="en">Pharmacovigilance, real-world studies &amp; label updates</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 机构关系图 ================= -->
+<section id="org-map" class="reveal">
+    <div class="section-head">
+        <div class="section-bar"></div>
+        <h2><span class="zh">机构关系图 · 谁在药物研发中扮演什么角色</span><span class="en">STAKEHOLDER MAP</span></h2>
+    </div>
+    <p class="section-note">
+        <span class="zh">一个药物从发现到上市，从来不是一家机构完成的：<strong>申办方（药企）</strong>居中统筹，上游对接科研机构与 CDMO，下游组织 CRO、研究中心与中心实验室执行，全程接受监管机构审评监督。</span>
+        <span class="en">No single organization takes a drug from discovery to market: the <strong>sponsor</strong> orchestrates, with academia and CDMOs upstream, CROs / sites / central labs executing downstream, and regulators reviewing throughout.</span>
+    </p>
+
+    <div class="neu fig-card">
+        <div class="fig-wrap">
+        <svg viewBox="0 0 940 600" role="img" aria-label="Stakeholder map of drug development">
+            <defs>
+                <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M 0 1 L 9 5 L 0 9 z" fill="#97a2b8"/>
+                </marker>
+            </defs>
+
+            <!-- 连线（先画线，节点盖在线端之上） -->
+            <g stroke="#97a2b8" stroke-width="2" fill="none">
+                <path d="M 245 179 L 346 250" marker-end="url(#arr)"/>
+                <path d="M 695 179 L 594 250" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                <path d="M 470 256 L 470 88" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                <path d="M 388 330 L 232 412" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                <path d="M 165 478 L 165 522 L 351 522" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                <path d="M 585 522 L 640 522 L 640 452 L 661 452" marker-end="url(#arr)"/>
+                <path d="M 782 416 L 602 320" marker-end="url(#arr)"/>
+            </g>
+
+            <!-- 连线标签 -->
+            <g font-size="11" fill="#6f7a92">
+                <text class="zh" x="250" y="206">成果转化 · 授权</text>
+                <text class="en" x="250" y="206">licensing &amp; transfer</text>
+                <text class="zh" x="690" y="206" text-anchor="end">委托生产 ↔ 供应</text>
+                <text class="en" x="690" y="206" text-anchor="end">CMC &amp; supply</text>
+                <text class="zh" x="484" y="168">申报 ↔ 审评</text>
+                <text class="en" x="484" y="168">filings ↔ review</text>
+                <text class="zh" x="310" y="358" text-anchor="middle">委托运营 ↔ 数据</text>
+                <text class="en" x="310" y="358" text-anchor="middle">outsourcing ↔ data</text>
+                <text class="zh" x="200" y="514">监查 · 协调</text>
+                <text class="en" x="200" y="514">monitoring</text>
+                <text class="zh" x="592" y="514">样本送检</text>
+                <text class="en" x="592" y="514">samples</text>
+                <text class="zh" x="700" y="356" text-anchor="middle">检测数据</text>
+                <text class="en" x="700" y="356" text-anchor="middle">lab data</text>
+            </g>
+
+            <!-- 节点 -->
+            <g>
+                <rect x="360" y="26" width="220" height="58" rx="14" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="470" y="51" text-anchor="middle" font-size="14" font-weight="700" fill="#3b4256">监管机构 · FDA / NMPA</text>
+                <text class="en" x="470" y="51" text-anchor="middle" font-size="11" font-weight="700" fill="#3b4256">Regulators · FDA / NMPA</text>
+                <text class="zh" x="470" y="71" text-anchor="middle" font-size="10.5" fill="#6f7a92">审评审批 · 现场检查</text>
+                <text class="en" x="470" y="71" text-anchor="middle" font-size="9.5" fill="#6f7a92">review, approval &amp; inspection</text>
+
+                <rect x="35" y="148" width="210" height="62" rx="14" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="140" y="173" text-anchor="middle" font-size="14" font-weight="700" fill="#3b4256">高校与科研院所</text>
+                <text class="en" x="140" y="173" text-anchor="middle" font-size="11" font-weight="700" fill="#3b4256">Academia &amp; institutes</text>
+                <text class="zh" x="140" y="194" text-anchor="middle" font-size="10.5" fill="#6f7a92">靶点发现 · 早期研究</text>
+                <text class="en" x="140" y="194" text-anchor="middle" font-size="9.5" fill="#6f7a92">discovery &amp; early research</text>
+
+                <rect x="695" y="148" width="210" height="62" rx="14" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="800" y="173" text-anchor="middle" font-size="14" font-weight="700" fill="#3b4256">CDMO 合同开发生产组织</text>
+                <text class="en" x="800" y="173" text-anchor="middle" font-size="11" font-weight="700" fill="#3b4256">CDMO</text>
+                <text class="zh" x="800" y="194" text-anchor="middle" font-size="10.5" fill="#6f7a92">工艺开发 · GMP 生产</text>
+                <text class="en" x="800" y="194" text-anchor="middle" font-size="9.5" fill="#6f7a92">process dev &amp; GMP manufacturing</text>
+
+                <rect x="350" y="256" width="240" height="74" rx="16" fill="#e6ebf4" stroke="#4f7df9" stroke-width="2"/>
+                <text class="zh" x="470" y="288" text-anchor="middle" font-size="15" font-weight="700" fill="#3b64e0">药物研发企业（申办方）</text>
+                <text class="en" x="470" y="288" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3b64e0">Sponsor (pharma / biotech)</text>
+                <text class="zh" x="470" y="312" text-anchor="middle" font-size="10.5" fill="#6f7a92">发起方 · IND / NDA 持有者 · 全程决策</text>
+                <text class="en" x="470" y="312" text-anchor="middle" font-size="9.5" fill="#6f7a92">holds IND / NDA; end-to-end decisions</text>
+
+                <rect x="55" y="416" width="220" height="62" rx="14" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="165" y="441" text-anchor="middle" font-size="14" font-weight="700" fill="#3b4256">CRO 合同研究组织</text>
+                <text class="en" x="165" y="441" text-anchor="middle" font-size="11" font-weight="700" fill="#3b4256">CRO</text>
+                <text class="zh" x="165" y="462" text-anchor="middle" font-size="10.5" fill="#6f7a92">临床运营 · 监查 · 数统</text>
+                <text class="en" x="165" y="462" text-anchor="middle" font-size="9.5" fill="#6f7a92">clinical ops, monitoring, data</text>
+
+                <rect x="665" y="416" width="230" height="62" rx="14" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="780" y="441" text-anchor="middle" font-size="14" font-weight="700" fill="#3b4256">中心实验室 / 临床实验室</text>
+                <text class="en" x="780" y="441" text-anchor="middle" font-size="11" font-weight="700" fill="#3b4256">Central / clinical lab</text>
+                <text class="zh" x="780" y="462" text-anchor="middle" font-size="10.5" fill="#6f7a92">样本检测 · 数据分析</text>
+                <text class="en" x="780" y="462" text-anchor="middle" font-size="9.5" fill="#6f7a92">sample testing &amp; analysis</text>
+
+                <rect x="355" y="496" width="230" height="62" rx="14" fill="#e6ebf4" stroke="#c1cbda" stroke-width="1.5"/>
+                <text class="zh" x="470" y="521" text-anchor="middle" font-size="14" font-weight="700" fill="#3b4256">医院 / 研究中心（+SMO）</text>
+                <text class="en" x="470" y="521" text-anchor="middle" font-size="11" font-weight="700" fill="#3b4256">Sites / hospitals (+SMO)</text>
+                <text class="zh" x="470" y="542" text-anchor="middle" font-size="10.5" fill="#6f7a92">受试者入组 · 给药 · 采样</text>
+                <text class="en" x="470" y="542" text-anchor="middle" font-size="9.5" fill="#6f7a92">enrollment, dosing, sampling</text>
+            </g>
+        </svg>
+        </div>
+        <p class="fig-cap">
+            <span class="zh">上游：科研成果经授权转化给药企，CDMO 承担工艺开发与生产；下游：药企委托 CRO 运营临床试验，研究中心入组受试者并采样，中心实验室完成检测，数据回流申办方；监管机构全程审评监督。</span>
+            <span class="en">Upstream: academic findings are licensed to sponsors, CDMOs handle process development and manufacturing; downstream: sponsors contract CROs to run trials, sites enroll and sample patients, central labs test and return data; regulators review throughout.</span>
+        </p>
+    </div>
+</section>
+    </div><!-- /main-col -->
+</div><!-- /layout -->
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="foot-line"></div>
+    <div>© 2026 <span class="zh">张天生</span><span class="en">Tiansheng Zhang</span> · <span class="zh">中国·无锡</span><span class="en">Wuxi, China</span></div>
+</footer>
+
+<script>
+(function () {
+    var body = document.body;
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+
+    function setLang(lang) {
+        body.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+        btnZh.classList.toggle('on', lang === 'zh');
+        btnEn.classList.toggle('on', lang === 'en');
+        document.title = lang === 'zh'
+            ? '职业路径 · FDA 药物研发全流程 · 张天生 Tiansheng Zhang'
+            : 'FDA Drug Development Process · Tiansheng Zhang';
+        try { localStorage.setItem('tz-lang', lang); } catch (e) {}
+    }
+
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+
+    var saved = null;
+    try { saved = localStorage.getItem('tz-lang'); } catch (e) {}
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+            if (en.isIntersecting) {
+                var i = sections.indexOf(en.target);
+                links.forEach(function (a, j) { a.classList.toggle('active', i === j); });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) navIO.observe(s); });
+})();
+</script>
+</body>
+</html>
